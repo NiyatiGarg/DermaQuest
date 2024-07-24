@@ -27,3 +27,7 @@ padding: 0;
   text-decoration: underline; /* Underline on active */
   text-underline-offset: 1.5em; /* Adjust gap between text and underline */
 }
+
+.form-control:focus{
+  box-shadow: none;
+}
