@@ -5,12 +5,11 @@ import Header from './Header';
 
 function Home() {
 
-  const { bgColor } = useContext(AppContext);
+  const { setPageTheme } = useContext(AppContext);
 
   return (
-    <div className="App" style={{ backgroundColor: bgColor }} >
+    <div >
       <Header />
-      <hr/>
       <div className='justify-content-center d-flex'>
         <h1>This is the Home page </h1>
       </div>

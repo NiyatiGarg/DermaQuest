@@ -3,10 +3,10 @@ import { AppContext } from "./AppContext";
 
 const AppContextProvider=({children})=>{
 
-const [bgColor, setBgColor]= useState('rgb(246, 180, 144)')
+const [pageTheme, setPageTheme]= useState('rgb(246, 180, 144)')
 
 return (
-    <AppContext.Provider value={{bgColor, setBgColor}}>
+    <AppContext.Provider value={{pageTheme, setPageTheme}}>
     {children}
     </AppContext.Provider>
 )

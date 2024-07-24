@@ -10,7 +10,6 @@ function AboutUs() {
     return (
         <div style={{ backgroundColor: bgColor }}>
         <Header />
-        <hr/>
         <div className='d-flex justify-content-center flex-column'>
         <h1 >DermaQuest: Your Personalized Skincare Guide</h1>
             <p>

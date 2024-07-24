@@ -10,7 +10,6 @@ function ContactUs() {
   return (
         <div style={{ backgroundColor: bgColor }}>
         <Header />
-        <hr/>
         <div className='d-flex justify-content-center'>
           <h1>
            Contact Us

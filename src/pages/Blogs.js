@@ -3,20 +3,20 @@ import React , {useContext} from 'react';
 import { AppContext } from '../AppContext';
 import Header from './Header';
 
-function Quiz() {
+function Blogs() {
 
   const { bgColor } = useContext(AppContext);
 
   return (
-    <div >
+        <div >
         <Header />
         <div className='d-flex justify-content-center'>
           <h1>
-            Start Quiz
+           Frequently asked topics
           </h1>
         </div>
     </div>
   )
 }
 
-export default Quiz;
+export default Blogs;
