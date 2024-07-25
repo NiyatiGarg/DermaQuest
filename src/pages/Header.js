@@ -12,7 +12,7 @@ const Header = () => {
 
     const location = useLocation(); // Get the current location object
     const ColorsArray = [
-        { pagename: '/', theme: 'rgb(246, 180, 144)' }, // Home
+        { pagename: '/', theme: 'rgb(238,195,176)' }, // Home
         { pagename: '/quiz', theme: 'rgb(154, 175, 143)' }, // Quiz
         { pagename: '/about', theme: 'rgb(144, 180, 246)' }, // About Us
         { pagename: '/contact', theme: 'rgb(184, 135, 152)' }, //Contact Us
@@ -27,11 +27,11 @@ const Header = () => {
     }, [location])
 
     return (
-        <header className="d-flex align-items-center justify-content-between " style={{ display: 'flex', padding: '2rem 10rem', backgroundColor: pageTheme }}>
+        <header className="d-flex align-items-center justify-content-between " style={{ display: 'flex', padding: '2vh 10vw', backgroundColor: pageTheme }}>
             <div>
                 <img src={Logo} className="App-logo" alt="logo" />
             </div>
-            <nav className='d-flex align-items-center' style={{ gap: '40px', fontSize: '1rem' }}>
+            <nav className='d-flex align-items-center' style={{ gap: '5vw', fontSize: '1.2vw' }}>
                 <NavLink className="nav-link" activeClassName="active-nav-link" exact to="/">Home</NavLink>
                 <NavLink className="nav-link" activeClassName="active-nav-link" exact to="/blogs">Blogs</NavLink>
                 <NavLink className="nav-link" activeClassName="active-nav-link" exact to="/ingredients">Ingredients</NavLink>

@@ -31,3 +31,9 @@ padding: 0;
 .form-control:focus{
   box-shadow: none;
 }
+
+.placeholder::placeholder{
+  color: black;
+  font-size: 1.2rem;
+  font-family: cursive !important;
+}

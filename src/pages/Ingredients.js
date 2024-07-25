@@ -18,33 +18,34 @@ function Ingredients() {
         <div >
         <Header />
         <section className='justify-content-center d-flex flex-column' style={{padding: '2vh 10vw'}}>
-        <h1>Know the science behind your skin</h1>
- 
-      <div
+        <div
           style={{
             width: '100%',
+            height: '10%',
             backgroundColor: pageTheme,
             boxShadow: '0 0 10px rgba(0, 0, 0, 0.2)',
             // borderRadius: 
 
           }} className='d-flex mt-4'>
-            
           <input
             autofocus={false}
             type="text"
             value={inputValue}
             onChange={handleInputChange}
-            placeholder="Ask about ingredients..."
-            className="form-control "
+            placeholder="Know the science behind the ingredients..."
+            className="form-control placeholder"
             style={{
               backgroundColor: 'transparent',
               border: 'none',
               paddingRight: '30px',
               color: 'black',
-              
+              fontSize: '1.2rem',
+              fontFamily: 'cursive',
+              textShadow: '1px 1px 2px rgba(0, 0, 0, 0.2)',
+
             }}
           />
-          <Icofont icon="search" className='p-2' style={{ display: 'flex', fontSize: '2rem' }} />
+          <Icofont icon="search" className='p-3' style={{ display: 'flex', fontSize: '1.5rem', color: 'black',   textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)', }} />
         </div>
       </section>
          

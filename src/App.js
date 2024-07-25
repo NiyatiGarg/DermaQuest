@@ -17,7 +17,7 @@ import './App.css';
 function App() {
 
   return (
-    <AppContextProvider>
+    <AppContextProvider >
     <Router>
      
         {/* <div className="container mt-4"> */}
