@@ -69,7 +69,6 @@ function Home() {
               fontSize: '1.2rem',
               fontFamily: 'cursive',
               textShadow: '1px 1px 2px rgba(0, 0, 0, 0.2)',
-
             }}
           />
           <Icofont icon="search" className='p-3'
