@@ -5,7 +5,9 @@ import Icofont from 'react-icofont';
 
 import Header from './Header';
 import Myths from './components/MythSection';
+import ArticleSection from './components/ArticleSection';
 import peach from '../assets/peach.png';
+
 
 function Home() {
 
@@ -35,8 +37,8 @@ function Home() {
 
         {/* headline */}
         <div className='d-flex flex-column align-items-center my-4 py-4' style={{}}>
-          <h2 className='d-flex text-center justify-content-center fw-bold flex-column' style={{ fontSize: '3rem' }}>Welcome to  <span style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)', paddingLeft: '15px', }}>DERMA QUEST !</span> </h2>
-          <h2 className='d-flex pt-4 mt-4' style={{ fontSize: '1.5rem', textAlign: 'justify', lineHeight: '3rem' }}>At DermaQuest, we believe that understanding your skin is the first step to achieving a healthy and radiant complexion.
+          <h2 className='d-flex text-center justify-content-center fw-bold' style={{ fontSize: '3rem' }}>Welcome to  <span style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)', paddingLeft: '15px', }}>DERMA QUEST !</span> </h2>
+          <h2 className='d-flex pt-4 mt-4' style={{ fontSize: '1.2rem', textAlign: 'justify', lineHeight: '2rem' }}>At DermaQuest, we believe that understanding your skin is the first step to achieving a healthy and radiant complexion.
             Our mission is to educate and empower you with the knowledge and tools you need to take the best care of your skin.
             Explore our resources, tips, and expert advice to find out what your skin truly needs.
           </h2>
@@ -87,6 +89,7 @@ function Home() {
       </section>
       {/* section3 - Myths */}
       <Myths />
+      <ArticleSection/>
     </div>
   )
 }

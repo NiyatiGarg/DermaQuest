@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import { AppContext } from "./AppContext";
+import skinTan from './assets/blogSpecificImages/skinTan.png';
 
 const AppContextProvider=({children})=>{
 
@@ -8,7 +9,7 @@ const [pageTheme, setPageTheme]= useState('rgb(246, 180, 144)')
 const myths=[
     {
         key:1,
-        title:'Skincare is a Part of Makeup',
+        title:'Skincare is a Part of Makeup ',
         explaination:'Skincare focuses on maintaining and improving the health of your skin, while makeup is used to enhance or alter your appearance. They serve different purposes.',
         image:'A makeup brush with a skincare bottle.'
     }, 
@@ -33,7 +34,7 @@ const myths=[
     {
         key:5,
         title:'Drinking Water Hydrates Your Skin',
-        explaination:'While staying hydrated is important, topical moisturizers are necessary to keep your skin hydrated and healthy.',
+        explaination:'While staying hydrated is important for the body, tipical moisturizers are necessary to keep your skin hydrated and healthy.',
         image:'A glass of water with a skin icon'
     },
     {
@@ -43,10 +44,64 @@ const myths=[
         image:'A jar of cream with dollar signs around it.'
     },
 ] 
+
+const mustReadBlogs=[
+    {
+        key:1,
+        title:'Is skin tanning only caused by the sun ?',
+        // Author: 'Dr. Meghna Gupta',
+        description:'No, skin tanning is not only caused by the sun! 🌞❌ There are other ways your skin can darken due to increased melanin production. Here are some non-sun causes of skin tanning',
+        imageUrl: skinTan
+    }, 
+    {
+        key:2,
+        title:'Importance of Skin care',
+        // Author: 'Dr. Meghna Gupta',
+        description:'No, skin tanning is not only caused by the sun! 🌞❌ There are other ways your skin can darken due to increased melanin production. Here are some non-sun causes of skin tanning',
+        imageUrl: skinTan
+
+    },
+    {
+        key:3,
+        title:'Is skin tanning only caused by the sun ?',
+        // Author: 'Dr. Meghna Gupta',
+        description:'No, skin tanning is not only caused by the sun! 🌞❌ There are other ways your skin can darken due to increased melanin production. Here are some non-sun causes of skin tanning',
+        imageUrl: skinTan
+    },
+    {
+        key:4,
+        title:'Is skin tanning only caused by the sun ?',
+        // Author: 'Dr. Meghna Gupta',
+        description:'No, skin tanning is not only caused by the sun! 🌞❌ There are other ways your skin can darken due to increased melanin production. Here are some non-sun causes of skin tanning',
+        imageUrl: skinTan
+    },
+    {
+        key:5,
+        title:'Is skin tanning only caused by the sun ?',
+        // Author: 'Dr. Meghna Gupta',
+        description:'No, skin tanning is not only caused by the sun! 🌞❌ There are other ways your skin can darken due to increased melanin production. Here are some non-sun causes of skin tanning',
+        imageUrl: skinTan
+    },
+    {
+        key:6,
+        title:'Is skin tanning only caused by the sun ?',
+        // Author: 'Dr. Meghna Gupta',
+        description:'No, skin tanning is not only caused by the sun! 🌞❌ There are other ways your skin can darken due to increased melanin production. Here are some non-sun causes of skin tanning',
+        imageUrl: skinTan
+    },
+    {
+        key:7,
+        title:'Is skin tanning only caused by the sun ?',
+        // Author: 'Dr. Meghna Gupta',
+        description:'No, skin tanning is not only caused by the sun! 🌞❌ There are other ways your skin can darken due to increased melanin production. Here are some non-sun causes of skin tanning',
+        imageUrl: skinTan
+    },
+    
+]
   
 
 return (
-    <AppContext.Provider value={{pageTheme, setPageTheme, myths}}>
+    <AppContext.Provider value={{pageTheme, setPageTheme, myths, mustReadBlogs}}>
     {children}
     </AppContext.Provider>
 )

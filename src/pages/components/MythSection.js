@@ -1,4 +1,4 @@
-import React,{useContext} from 'react';
+import React, {useContext} from 'react';
 
 import { AppContext } from '../../AppContext';
 
@@ -19,8 +19,8 @@ const Myths=()=>{
         <h1 className='d-flex justify-content-center my-5 text-center' style={{ fontFamily: 'cursive' }}>
           Busting Myths about Skincare
         </h1>
-        <div className='d-flex'>
-          <div className='col-md-6'>
+        <div className='d-flex align-items-end'>
+          <div className='col-md-6' style={{margin: '2rem 0 5rem 0'}}>
             {myths.map((myth, index) => (
               <Accordion
                 style={{
@@ -53,8 +53,8 @@ const Myths=()=>{
               </Accordion>
             ))}
           </div>
-          <div>
-            <img src={myth} alt={'myths about skincare'} style={{ height: '100%', width: '110%' }} />
+          <div >
+            <img src={myth} alt={'myths about skincare'} style={{ height: '500px', width: '600px' }} />
           </div>
         </div>
       </section>

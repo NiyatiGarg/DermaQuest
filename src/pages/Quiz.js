@@ -8,14 +8,14 @@ function Quiz() {
   const { bgColor } = useContext(AppContext);
 
   return (
-    <div >
+    <>
         <Header />
-        <div className='d-flex justify-content-center'>
-          <h1>
-            Start Quiz
+        <div className='d-flex justify-content-center align-items-center' >
+          <h1 className='p-5'>
+            Coming Soon
           </h1>
         </div>
-    </div>
+    </>
   )
 }
 

@@ -4,7 +4,7 @@
 
 .App-logo {
   display: flex;
-  height: 12vmin;
+  height: 7vmin;
   pointer-events: none;
 }
 
@@ -19,13 +19,14 @@ padding: 0;
   /* font-weight: bold; */
   color: black; /* Text color on hover  */
   text-decoration: underline; /* Underline on hover */
-  text-underline-offset: 1.5em; /* Adjust gap between text and underline */
+  text-underline-offset: 2.2em; /* Adjust gap between text and underline */
 }
 .active-nav-link {
   font-weight: bold;
   color: black; /* Text color on active */
   text-decoration: underline; /* Underline on active */
-  text-underline-offset: 1.5em; /* Adjust gap between text and underline */
+  text-underline-offset: 2em; 
+  text-decoration-thickness: 3px;
 }
 
 .form-control:focus{

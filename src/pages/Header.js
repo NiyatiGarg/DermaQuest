@@ -8,7 +8,7 @@ import { AppContext } from '../AppContext';
 
 const Header = () => {
 
-    const { pageTheme, setPageTheme } = useContext(AppContext);
+    const { pageTheme, setPageTheme,  } = useContext(AppContext);
 
     const location = useLocation(); // Get the current location object
     const ColorsArray = [
@@ -18,6 +18,7 @@ const Header = () => {
         { pagename: '/contact', theme: 'rgb(184, 135, 152)' }, //Contact Us
         { pagename: '/ingredients', theme: 'rgb(122, 165, 195)' }, // Updated color for Ingredients
         { pagename: '/blogs', theme: 'rgb(158, 141, 163)' }, // Updated color for Blogs
+        // {pathname: '/single-blog-page', theme: '#C4A998'}
     ];
 
     const Color = ColorsArray.find(obj => obj.pagename === location.pathname).theme || 'rgb(246, 180, 144)'; // Default color
@@ -32,12 +33,12 @@ const Header = () => {
                 <img src={Logo} className="App-logo" alt="logo" />
             </div>
             <nav className='d-flex align-items-center' style={{ gap: '5vw', fontSize: '1.2vw' }}>
-                <NavLink className="nav-link" activeClassName="active-nav-link" exact to="/">Home</NavLink>
-                <NavLink className="nav-link" activeClassName="active-nav-link" exact to="/blogs">Blogs</NavLink>
-                <NavLink className="nav-link" activeClassName="active-nav-link" exact to="/ingredients">Ingredients</NavLink>
-                <NavLink className="nav-link " activeClassName="active-nav-link" to="/quiz">Take a Quiz</NavLink>
-                <NavLink className="nav-link" activeClassName="active-nav-link" to="/about">About Us</NavLink>
-                <NavLink className="nav-link" activeClassName="active-nav-link" to="/contact">Contact Us</NavLink>
+                <NavLink className={({ isActive }) => isActive ? "nav-link active-nav-link" : "nav-link"} exact to="/" >Home</NavLink>
+                <NavLink className={({ isActive }) => isActive ? "nav-link active-nav-link" : "nav-link"} exact to="/blogs">Blogs</NavLink>
+                <NavLink className={({ isActive }) => isActive ? "nav-link active-nav-link" : "nav-link"} exact to="/ingredients" >Ingredients</NavLink>
+                <NavLink className={({ isActive }) => isActive ? "nav-link active-nav-link" : "nav-link"} to="/quiz" >Take a Quiz</NavLink>
+                <NavLink className={({ isActive }) => isActive ? "nav-link active-nav-link" : "nav-link"} to="/about" >About Us</NavLink>
+                <NavLink className={({ isActive }) => isActive ? "nav-link active-nav-link" : "nav-link"} to="/contact" >Contact Us</NavLink>
             </nav>
         </header>
     );
