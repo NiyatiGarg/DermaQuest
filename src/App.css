@@ -14,6 +14,25 @@ padding: 0;
   color: black; /* Default text color */
   text-decoration: none;
 }
+.default-scrollbar::-webkit-scrollbar{
+  display: none;
+}
+
+.three-line-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Show only 3 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: relative;
+}
+.read-more-link {
+  color: #007bff;
+  cursor: pointer;
+  font-weight: 500;
+  margin-left: 5px;
+  text-decoration: underline;
+}
 
 .nav-link:hover{
   /* font-weight: bold; */
