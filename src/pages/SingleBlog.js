@@ -23,10 +23,10 @@ function SingleBlog() {
       <Header />
       <div style={{ margin: "10vh 10vw", minHeight: '100vh' , gridTemplateColumns: '1fr 300px',}} className="gap-5 d-flex flex-column">
         <h1>{blog.title}</h1>
-        <div className="d-flex gap-4">
-          <p className=" d-flex flex-grow-1" style={{ textAlign: "justify" , lineHeight: '2rem' }}>
-            {blog.description}
-          </p>
+        <div className="gap-4 d-flex">
+          <div className="flex-grow-1" style={{ textAlign: "start" , lineHeight: '2rem' }}
+          dangerouslySetInnerHTML={{ __html: blog.description }}
+          ></div>
           <img
             src={blog.imageUrl}
             alt=""
@@ -35,7 +35,6 @@ function SingleBlog() {
               objectFit: "cover",
               width: "300px",
               height: "300px",
-              display:'block',
             }}
           />
         </div>

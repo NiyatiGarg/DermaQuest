@@ -14,26 +14,17 @@ const Header = () => {
 const currentPath = location.pathname;
 
     const ColorsArray = [
-        { pagename: '/', theme: 'rgb(238,195,176)' }, // Home
-        { pagename: '/quiz', theme: 'rgb(154, 175, 143)' }, // Quiz
-        { pagename: '/about', theme: 'rgb(144, 180, 246)' }, // About Us
-        { pagename: '/contact', theme: 'rgb(184, 135, 152)' }, //Contact Us
-        { pagename: '/ingredients', theme: 'rgb(122, 165, 195)' }, // Updated color for Ingredients
-        { pagename: '/blogs', theme: 'rgb(158, 141, 163)' }, // Updated color for Blogs
-        {pathname: '/blog', theme: 'rgb(196, 169, 152)'}
+        { pagename: '/', theme: 'rgb(238,195,176)' },
+        { pagename: '/quiz', theme: 'rgb(154, 175, 143)' }, 
+        { pagename: '/about', theme: 'rgb(144, 180, 246)' }, 
+        { pagename: '/contact', theme: 'rgb(184, 135, 152)' }, 
+        { pagename: '/ingredients', theme: 'rgb(122, 165, 195)' }, 
+        { pagename: '/blogs', theme: 'rgb(158, 141, 163)' },
     ];
 
-    // const Color = ColorsArray.find(obj => obj.pagename === location.pathname).theme || 'rgb(246, 180, 144)'; // Default color
-
-    // useEffect(() => {
-    //     setPageTheme(Color);
-    // }, [location])
-
     useEffect(() => {
-        let matchedColor = ColorsArray.find(item =>
-          location.pathname.startsWith(item.pagename)
-        )?.theme;
-    
+        let matchedColor = ColorsArray.find(item => item.pagename==location.pathname)?.theme;
+    console.log(matchedColor, '<--- theme'); 
         if (matchedColor) {
           setPageTheme(matchedColor);
         }
