@@ -12,8 +12,8 @@ function ArticleSection() {
       style={{ padding: "2rem 10rem 5rem 10rem", background: pageTheme }}
     >
       <h1
-        className="justify-content-center my-5 text-center p-0"
-        style={{ fontFamily: "cursive" }}
+        className="justify-content-center my-5 text-start, p-0"
+        style={{ fontFamily: "cursive" , borderBottom: '1px solid black' }}
       >
         Must Read
       </h1>
@@ -21,7 +21,7 @@ function ArticleSection() {
         {mustReadBlogs.map((blog) => (
           <div
             class=" card mb-3 d-flex flex-column p-3 gap-1"
-            style={{ background: pageTheme, minWidth: '230px', boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)'}}
+            style={{ background: pageTheme, minWidth: '260px', boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)'}}
           >
               <div className="d-flex">
                 <img
@@ -41,7 +41,7 @@ function ArticleSection() {
                 <a 
                 className="d-flex justify-content-end"
                 style={{bottom: 0}}
-                onClick={() => navigate(`/blog/${blog.key}`)}
+                onClick={() => navigate(`/blog/${blog.key}/${blog.title}`)}
                 >
                 Read More
                 </a>

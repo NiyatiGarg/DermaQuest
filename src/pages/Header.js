@@ -11,6 +11,8 @@ const Header = () => {
     const { pageTheme, setPageTheme,  } = useContext(AppContext);
 
     const location = useLocation(); // Get the current location object
+const currentPath = location.pathname;
+
     const ColorsArray = [
         { pagename: '/', theme: 'rgb(238,195,176)' }, // Home
         { pagename: '/quiz', theme: 'rgb(154, 175, 143)' }, // Quiz
@@ -18,17 +20,27 @@ const Header = () => {
         { pagename: '/contact', theme: 'rgb(184, 135, 152)' }, //Contact Us
         { pagename: '/ingredients', theme: 'rgb(122, 165, 195)' }, // Updated color for Ingredients
         { pagename: '/blogs', theme: 'rgb(158, 141, 163)' }, // Updated color for Blogs
-        // {pathname: '/single-blog-page', theme: '#C4A998'}
+        {pathname: '/blog', theme: 'rgb(196, 169, 152)'}
     ];
 
-    const Color = ColorsArray.find(obj => obj.pagename === location.pathname).theme || 'rgb(246, 180, 144)'; // Default color
+    // const Color = ColorsArray.find(obj => obj.pagename === location.pathname).theme || 'rgb(246, 180, 144)'; // Default color
+
+    // useEffect(() => {
+    //     setPageTheme(Color);
+    // }, [location])
 
     useEffect(() => {
-        setPageTheme(Color);
-    }, [location])
+        let matchedColor = ColorsArray.find(item =>
+          location.pathname.startsWith(item.pagename)
+        )?.theme;
+    
+        if (matchedColor) {
+          setPageTheme(matchedColor);
+        }
+      }, [location.pathname]);
 
     return (
-        <header className="d-flex align-items-center justify-content-between " style={{ display: 'flex', padding: '2vh 10vw', backgroundColor: pageTheme }}>
+        <header className="d-flex align-items-center justify-content-between " style={{ display: 'flex', padding: '2vh 10vw', backgroundColor: pageTheme, boxShadow: '0 0 10px rgba(0, 0, 0, 0.9)', }}>
             <div>
                 <img src={Logo} className="App-logo" alt="logo" />
             </div>
