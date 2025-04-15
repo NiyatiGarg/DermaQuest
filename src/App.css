@@ -26,6 +26,15 @@ padding: 0;
   text-overflow: ellipsis;
   position: relative;
 }
+.two-line-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Show only 3 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: relative;
+}
+
 .read-more-link {
   color: #007bff;
   cursor: pointer;

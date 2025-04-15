@@ -13,7 +13,7 @@ function ArticleSection() {
     >
       <h1
         className="justify-content-center my-5 text-start, p-0"
-        style={{ fontFamily: "cursive" , borderBottom: '1px solid black' }}
+        style={{ fontFamily: "cursive", borderBottom: "1px solid black" }}
       >
         Must Read
       </h1>
@@ -21,31 +21,39 @@ function ArticleSection() {
         {mustReadBlogs.map((blog) => (
           <div
             class=" card mb-3 d-flex flex-column p-3 gap-1"
-            style={{ background: pageTheme, minWidth: '260px', boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)'}}
+            style={{
+              background: pageTheme,
+              minWidth: "260px",
+              boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
+            }}
           >
-              <div className="d-flex">
-                <img
-                  src={blog.imageUrl}
-                  style={{height: '200px', width: '100%'}}
-                  className="d-flex"
-                  alt="img"
-                />
-              </div>
+            <div className="d-flex">
+              <img
+                src={blog.imageUrl}
+                style={{ height: "200px", width: "100%" }}
+                className="d-flex"
+                alt="img"
+              />
+            </div>
+            <div class="d-flex flex-column justify-content-between" style={{ height: "100%" }}>
+                <h5 class="card-title fw-bold two-line-text" style={{cursor: 'pointer'}} title={blog.title} >{blog.title}</h5>
               <div class="">
-                <div class="">
-                <h5 class="card-title fw-bold">{blog.title}</h5>
-                <p className="card-text three-line-text" >
-                {blog.description}
-                
-                </p>
-                <a 
-                className="d-flex justify-content-end"
-                style={{bottom: 0}}
-                onClick={() => navigate(`/blog/${blog.key}/${blog.title}`)}
+
+                <p
+                  className="card-text three-line-text"
+                  dangerouslySetInnerHTML={{
+                    __html: blog.description.match(/<p[^>]*>(.*?)<\/p>/),
+                  }}
+                ></p>
+
+                <a
+                  className="d-flex justify-content-end"
+                  style={{ bottom: 0 }}
+                  onClick={() => navigate(`/blog/${blog.key}/${blog.title}`)}
                 >
-                Read More
+                  Read More
                 </a>
-                </div>
+              </div>
             </div>
           </div>
         ))}
