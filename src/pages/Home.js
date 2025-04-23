@@ -1,33 +1,47 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { AppContext } from '../AppContext';
+import './Home.css';
 
-import Icofont from 'react-icofont';
+// import Icofont from 'react-icofont';
+import { FaSearch } from "react-icons/fa";
 
 import Header from './Header';
 import Myths from './components/MythSection';
 import ArticleSection from './components/ArticleSection';
 import peach from '../assets/peach.png';
 
+import ReactMarkdown from "react-markdown";
+
+const examples = [
+  "What is salicylic acid and how does it work?",
+  "Why do we need skincare?",
+  "Is skincare important for men too?",
+  "Serum vs Moisturizer – what's the difference?",
+  "Best routine for oily skin?",
+  "How to reduce acne marks naturally?",
+  "Can I use vitamin C and niacinamide together?",
+];
 
 function Home() {
 
-  const { pageTheme } = useContext(AppContext);
+  const { pageTheme, askQuery, aiResponse, setAiResponse, loading, setLoading } = useContext(AppContext);
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState(null);
   // const [inputValue, setInputValue] = useState('')
+  const [currentIndex, setCurrentIndex] = useState(0);
+
 
   const handleInputChange = (e) => {
     setQuestion(e.target.value)
   }
 
-  function fetchAnswer(question) {
-    // Implement your logic to fetch answer based on question
-    // This is an example using a placeholder API
-    fetch(`https://api.example.com/answer?question=${question}`)
-      .then((response) => response.json())
-      .then((data) => setAnswer(data.answer))
-      .catch((error) => console.error(error));
-  }
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % examples.length);
+    }, 5000); // Changes every 3 seconds
+
+    return () => clearInterval(interval); // Clean up on unmount
+  }, [examples.length]);
 
   return (
     <div className='d-flex flex-column App' style={{ overflow: 'hidden' }} >
@@ -37,55 +51,88 @@ function Home() {
 
         {/* headline */}
         <div className='d-flex flex-column align-items-center my-4 py-4' style={{}}>
-          <h2 className='d-flex text-center justify-content-center fw-bold' style={{ fontSize: '3rem' }}>Welcome to  <span style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)', paddingLeft: '15px', }}>DERMA QUEST !</span> </h2>
-          <h2 className='d-flex pt-4 mt-4' style={{ fontSize: '1.2rem', textAlign: 'justify', lineHeight: '2rem' }}>At DermaQuest, we believe that understanding your skin is the first step to achieving a healthy and radiant complexion.
+          <h2 className='d-flex text-center justify-content-center fw-bold' style={{ fontSize: '2.5rem' }}>Welcome to  <span style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)', paddingLeft: '15px', }}>DERMA QUEST !</span> </h2>
+          <h2 className='d-flex pt-4 mt-4' style={{ fontSize: '1.2rem', textAlign: 'justify', lineHeight: '1.5rem' }}>At DermaQuest, we believe that understanding your skin is the first step to achieving a healthy and radiant complexion.
             Our mission is to educate and empower you with the knowledge and tools you need to take the best care of your skin.
             Explore our resources, tips, and expert advice to find out what your skin truly needs.
           </h2>
         </div>
       </section>
       {/* Section2 */}
-      <section className='mb-4' style={{ padding: '2vh 10vw' }} >
+      <section className='gap-4 d-flex flex-column' style={{ padding: '10vh 10vw' }} >
+      <h5 className="card-title">👋 Hi, I'm your personal skin care guide!</h5>
+        <p className="card-text">
+          Ask me anything about skin health, ingredients, or routines —
+          I'm here to help you glow! ✨
+        </p>
         {/* searchbar */}
         <div
           style={{
             width: '100%',
-            height: '10%',
-            backgroundColor: pageTheme,
-            boxShadow: '0 0 10px rgba(0, 0, 0, 0.2)',
-            // borderRadius: 
+            alignItems: 'center',
+            color: 'lightGrey',
+            border: '1px solid black',
 
-          }} className='d-flex mt-4'>
+          }} className='d-flex mt-4 '>
           <input
             autofocus={false}
             type="text"
             value={question}
             onChange={e => handleInputChange(e)}
-            placeholder="Ask about ingredients, routines, and more..."
-            className="form-control placeholder"
+            placeholder={examples[currentIndex]}
+            className="px-4 py-2"
             style={{
               backgroundColor: 'transparent',
               border: 'none',
               paddingRight: '30px',
               color: 'black',
-              fontSize: '1.2rem',
-              fontFamily: 'cursive',
-              textShadow: '1px 1px 2px rgba(0, 0, 0, 0.2)',
+              fontSize: '1rem',
+              width: '100%',
+              heigth: '100%'
+            }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" && !e.shiftKey) {
+                e.preventDefault();
+                askQuery(question);
+              setLoading(true);
+              }
             }}
           />
-          <Icofont icon="search" className='p-3'
+         <FaSearch 
             onClick={() => {
-              setQuestion(question.trim()); // Trim extra spaces
-              fetchAnswer(question);
+              askQuery(question);
+              setLoading(true);
             }}
-            style={{ display: 'flex', fontSize: '1.5rem', color: 'black', textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)', }} />
+            className='m-2'
+            style={{ display: 'flex', fontSize: '1.5rem', color: 'grey', fontWeight: '20'}} />
         </div>
-        <div className='mt-5' style={{ height: '500px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.3)', position: 'relative' }}>
-          <img src={peach} alt='' style={{ height: '100%', width: '100%', zIndex: 1 }} />
-          {question ? <p className=' p-4 fw-bold '
-            style={{ zIndex: 3, width: '95%', background: 'rgba(255, 255, 255, 0.5)', position: 'absolute', top: '12%', left: '50%', transform: 'translate(-50%, -50%)' }}
-          > {question}</p> : null}
-        </div>
+       
+          {loading ?
+           <div className="loader">
+           <hr />
+           <hr />
+           <hr />
+         </div>
+         : 
+         <>
+
+          <ReactMarkdown
+          style={{ 
+            // zIndex: 2, 
+          //  background: '#F8F9FA', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.4)', overflow:'scroll', maxHeight: '550px'
+          }}
+        
+          components={{
+            p: ({ children }) => <p className="mb-2 text-body">{children}</p>,
+            strong: ({ children }) => <strong className="fw-bold">{children}</strong>,
+            em: ({ children }) => <em className="fst-italic">{children}</em>,
+            code: ({ children }) => <code className="bg-light px-1 rounded">{children}</code>,
+          }}
+        >
+          {aiResponse}
+        </ReactMarkdown> 
+         </>}
+        {/* </div> */}
       </section>
       {/* section3 - Myths */}
       <Myths />

@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../../AppContext";
+import { TbH2 } from "react-icons/tb";
 
 function ArticleSection() {
   const { pageTheme, mustReadBlogs } = useContext(AppContext);
@@ -11,12 +12,12 @@ function ArticleSection() {
       className="d-flex flex-column "
       style={{ padding: "2rem 10rem 5rem 10rem", background: pageTheme }}
     >
-      <h1
+      <h2
         className="justify-content-center my-5 text-start, p-0"
-        style={{ fontFamily: "cursive", borderBottom: "1px solid black" }}
+        style={{  borderBottom: "1px solid black" }}
       >
         Must Read
-      </h1>
+      </h2>
       <div className="d-flex gap-4 overflow-scroll default-scrollbar">
         {mustReadBlogs.map((blog) => (
           <div

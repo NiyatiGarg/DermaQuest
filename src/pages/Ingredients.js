@@ -3,7 +3,9 @@ import React , {useContext, useState} from 'react';
 import { AppContext } from '../AppContext';
 import Header from './Header';
 
-import Icofont from 'react-icofont';
+// import Icofont from 'react-icofont';
+import { FaSearch } from "react-icons/fa";
+
 
 function Ingredients() {
 
@@ -45,7 +47,7 @@ function Ingredients() {
 
             }}
           />
-          <Icofont icon="search" className='p-3' style={{ display: 'flex', fontSize: '1.5rem', color: 'black',   textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)', }} />
+          <FaSearch icon="search" className='p-3' style={{ display: 'flex', fontSize: '1.5rem', color: 'black',   textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)', }} />
         </div>
       </section>
          

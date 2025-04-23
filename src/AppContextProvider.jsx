@@ -9,9 +9,12 @@ import Img6 from "./assets/blogSpecificImages/Img6.png";
 import Img7 from "./assets/blogSpecificImages/Img7.png";
 
 import { ImportantDevices } from "@mui/icons-material";
+import getAiResponse from "./config/gemini";
 
 const AppContextProvider = ({ children }) => {
   const [pageTheme, setPageTheme] = useState("rgb(238,195,176)");
+  const [aiResponse, setAiResponse]= useState('');
+  const [loading, setLoading]= useState(false);
 
   const myths = [
     {
@@ -387,9 +390,23 @@ const AppContextProvider = ({ children }) => {
     },
   ];
 
+  const askQuery = async (prompt) => {
+    const response = await getAiResponse(prompt);
+    setAiResponse(response);
+    setLoading(false);
+  };
+
   return (
     <AppContext.Provider
-      value={{ pageTheme, setPageTheme, myths, mustReadBlogs }}
+      value={{ 
+        pageTheme, 
+        setPageTheme, 
+        myths, 
+        mustReadBlogs,
+        askQuery,
+        aiResponse, setAiResponse,
+        loading, setLoading
+      }}
     >
       {children}
     </AppContext.Provider>

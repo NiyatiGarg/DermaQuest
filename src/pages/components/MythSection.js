@@ -8,6 +8,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import myth from '../../assets/myth.png';
+import { RiH2 } from 'react-icons/ri';
 
 const Myths=()=>{
 
@@ -16,9 +17,11 @@ const Myths=()=>{
   return (
     <section className='justify-content-center d-flex flex-column bg-light' style={{ padding: '2vh 10vw' }}>
         
-        <h1 className='d-flex justify-content-center my-5 text-center' style={{ fontFamily: 'cursive' }}>
+        <h2 className='d-flex justify-content-center my-5 text-center' 
+        // style={{ fontFamily: 'cursive' }}
+        >
           Busting Myths about Skincare
-        </h1>
+        </h2>
         <div className='d-flex align-items-end'>
           <div className='col-md-6' style={{margin: '2rem 0 5rem 0'}}>
             {myths.map((myth, index) => (
@@ -46,7 +49,7 @@ const Myths=()=>{
                   <Typography style={{ fontSize: '1.2rem', fontWeight: '30', fontFamily: 'cursive' }}>{myth.title}</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                  <Typography className='p-2 text-center' style={{ fontFamily: 'cursive', fontSize: '1.2rem' }}>
+                  <Typography className='p-2 text-center' style={{  fontSize: '1.2rem' }}>
                     {myth.explaination}
                   </Typography>
                 </AccordionDetails>
