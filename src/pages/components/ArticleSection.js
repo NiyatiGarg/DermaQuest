@@ -9,8 +9,8 @@ function ArticleSection() {
 
   return (
     <section
-      className="d-flex flex-column "
-      style={{ padding: "2rem 10rem 5rem 10rem", background: pageTheme }}
+      className="d-flex flex-column responsive-margin"
+      style={{ background: 'white' }}
     >
       <h2
         className="justify-content-center my-5 text-start, p-0"
@@ -21,18 +21,16 @@ function ArticleSection() {
       <div className="d-flex gap-4 overflow-scroll default-scrollbar">
         {mustReadBlogs.map((blog) => (
           <div
-            class=" card mb-3 d-flex flex-column p-3 gap-1"
+            class=" card mb-3 d-flex flex-column p-3 gap-1 blog-cards"
             style={{
               background: pageTheme,
-              minWidth: "260px",
               boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
             }}
           >
             <div className="d-flex">
               <img
                 src={blog.imageUrl}
-                style={{ height: "200px", width: "100%" }}
-                className="d-flex"
+                className="d-flex card-img"
                 alt="img"
               />
             </div>

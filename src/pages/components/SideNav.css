@@ -1,0 +1,174 @@
+
+/* ################################# SideNav.jsx ############################################ */
+.side-nav {
+    background-color: #ffffff;
+    height: calc(100vh - 64px); /* Subtract top-nav height */
+    width: 250px;
+    padding-top: 2rem;
+  
+    position: fixed;
+    top: 64px; /* Match top-nav height */
+    left: 0;
+    overflow-y: auto;
+    transition: transform 0.3s ease-in-out;
+  }
+  .content {
+    margin-left: 250px;
+    margin-top: 64px; /* Match top-nav height */
+    padding: 20px;
+    flex: 1;
+  }
+  .side-nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  .side-nav li {
+    color: #555;
+    max-height: 2.8rem;
+    padding: 1rem 0rem 1rem 3rem;
+  
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  
+    transition: background-color 0.3s, border-bottom 0.3s;
+  }
+  
+  .side-nav li:hover {
+    color: #333;
+    background-color: #e9ecef;
+    border-radius: 0px 15px 15px 0px;
+  }
+  
+  /* Desktop View - Active Option */
+  .side-nav li.active {
+    color: rgba(229, 169, 0, 1);
+    border-radius: 0px 15px 15px 0px;
+    font-weight: normal;
+    background-color: rgba(255, 239, 191, 1);
+  }
+  
+  /* Mobile View - Active Option */
+  @media only screen and (max-width: 768px) {
+    .top-nav {
+      border-bottom: none;
+      padding: 10px 1.5rem;
+    }
+  
+    .side-nav {
+      width: 100%;
+      padding-top: 0rem;
+  
+      height: auto;
+      position: relative;
+      border-right: none;
+      border-bottom: 1px solid #e0e0e0;
+      overflow-x: auto;
+      scrollbar-width: none;
+      z-index: 1;
+    }
+  
+    .side-nav ul {
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: nowrap;
+    }
+  
+    .side-nav li {
+      white-space: nowrap;
+      padding: 10px 20px;
+  
+      flex: 0 0 auto;
+      border-radius: 0px;
+    }
+  
+    .side-nav li.active {
+      color: #333;
+      background-color: #fff;
+      border-radius: 0px;
+      border-bottom: 3px solid rgba(229, 169, 0, 1); /* Yellow underline */
+    }
+  }
+  
+  .App {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .content {
+    margin-left: 240px;
+    padding: 20px;
+    flex: 1;
+  }
+  .nav-link {
+    color: inherit;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  @media (max-width: 991.98px) {
+    .side-nav {
+      width: 100%;
+      height: auto;
+      position: sticky;
+      top: 64px;
+      border-right: none;
+      border-bottom: 1px solid #e0e0e0;
+      overflow-x: auto;
+    }
+  
+    .side-nav ul {
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: nowrap;
+    }
+  
+    .side-nav li {
+      white-space: nowrap;
+      padding: 10px 20px;
+      flex: 0 0 auto;
+      max-height: 6rem;
+    }
+  
+    .content {
+      margin-left: 0;
+      margin-top: calc(64px + 56px); /* top-nav + mobile side-nav height */
+    }
+  }
+  @media (max-width: 1194px) and (orientation: portrait) {
+    .side-nav {
+      width: 100%;
+      padding-top: 0rem;
+  
+      height: auto;
+      position: relative;
+      border-right: none;
+      border-bottom: 1px solid #e0e0e0;
+      overflow-x: auto;
+      scrollbar-width: none;
+      z-index: 1;
+    }
+  
+    .side-nav ul {
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: nowrap;
+    }
+  
+    .side-nav li {
+      white-space: nowrap;
+      padding: 10px 20px;
+      flex: 0 0 auto;
+      border-radius: 0px;
+    }
+  
+    .side-nav li.active {
+      color: #333;
+      background-color: #fff;
+      border-radius: 0px;
+      border-bottom: 3px solid rgba(229, 169, 0, 1); /* Yellow underline */
+    }
+  }
+  /* ################################# SideNav.jsx Ends ############################################ */

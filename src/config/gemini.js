@@ -32,6 +32,5 @@ export default async function getAiResponse(prompt) {
 
   const result = await response.json();
   const output = result?.candidates?.[0]?.content?.parts?.[0]?.text;
-  console.log(output);
   return output;
 }

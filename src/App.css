@@ -8,12 +8,7 @@
   pointer-events: none;
 }
 
-/* App.css */
-.nav-link {
-padding: 0;
-  color: black; /* Default text color */
-  text-decoration: none;
-}
+
 .default-scrollbar::-webkit-scrollbar{
   display: none;
 }
@@ -43,19 +38,7 @@ padding: 0;
   text-decoration: underline;
 }
 
-.nav-link:hover{
-  /* font-weight: bold; */
-  color: black; /* Text color on hover  */
-  text-decoration: underline; /* Underline on hover */
-  text-underline-offset: 2.2em; /* Adjust gap between text and underline */
-}
-.active-nav-link {
-  font-weight: bold;
-  color: black; /* Text color on active */
-  text-decoration: underline; /* Underline on active */
-  text-underline-offset: 2em; 
-  text-decoration-thickness: 3px;
-}
+
 
 .form-control:focus{
   box-shadow: none;
@@ -64,5 +47,65 @@ padding: 0;
 .placeholder::placeholder{
   color: black;
   font-size: 1.2rem;
-  font-family: cursive !important;
+}
+
+
+
+.contact-input{
+  width: 60%
+}
+
+.submit-button{
+  
+  border-radius: 5%;
+  background: white;
+  padding: 5px 10px;
+}
+
+.responsive-margin{
+  margin: 2vh 10vw;
+  gap: 5vh;
+}
+
+.blog-cards{
+  min-width: 260px;
+  max-width: 350px;
+}
+.card-img{
+  height: 200px;
+  width: 100%;
+  /* color: #df880d */
+}
+
+/* .quiz-button:hover{
+  background: #4B643D !important;
+  color: white !important;
+} */
+
+@media (max-width: 767px) {
+  .contact-input {
+    width: 100%;
+  }
+
+  .responsive-margin{
+    margin: 2vh 7vw;
+    gap: 1vh;
+  }
+  .blog-text{
+    text-align: justify;
+  }
+
+  .myth-section-responsive{
+  flex-direction: column;
+  }
+  .dropdown-width{
+    width: 100% !important;
+  }
+  .blog-cards{
+    min-width: 360px;
+  }
+  .card-img{
+    height: 300px;
+    width: 100%;
+  }
 }

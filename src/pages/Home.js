@@ -4,6 +4,7 @@ import './Home.css';
 
 // import Icofont from 'react-icofont';
 import { FaSearch } from "react-icons/fa";
+import { RiMenu2Fill } from "react-icons/ri";
 
 import Header from './Header';
 import Myths from './components/MythSection';
@@ -11,6 +12,8 @@ import ArticleSection from './components/ArticleSection';
 import peach from '../assets/peach.png';
 
 import ReactMarkdown from "react-markdown";
+import SideNav from './components/SideNav';
+import Footer from './Footer';
 
 const examples = [
   "What is salicylic acid and how does it work?",
@@ -24,7 +27,7 @@ const examples = [
 
 function Home() {
 
-  const { pageTheme, askQuery, aiResponse, setAiResponse, loading, setLoading } = useContext(AppContext);
+  const { pageTheme, askQuery, aiResponse, setAiResponse, loading, setLoading, isSmallScreen, openSideNav, setOpenSideNav, contrastColor } = useContext(AppContext);
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState(null);
   // const [inputValue, setInputValue] = useState('')
@@ -44,14 +47,18 @@ function Home() {
   }, [examples.length]);
 
   return (
-    <div className='d-flex flex-column App' style={{ overflow: 'hidden' }} >
+    <div className='d-flex flex-column App' style={{ overflow: 'hidden', color: contrastColor }} >
       <Header />
+
       {/* Section1 */}
       <section className='justify-content-center d-flex flex-column align-items-center bg-light' style={{ padding: '2vh 10vw', height: '100%', background: '' }}>
+       
+       
+        
 
         {/* headline */}
-        <div className='d-flex flex-column align-items-center my-4 py-4' style={{}}>
-          <h2 className='d-flex text-center justify-content-center fw-bold' style={{ fontSize: '2.5rem' }}>Welcome to  <span style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)', paddingLeft: '15px', }}>DERMA QUEST !</span> </h2>
+        <div className='d-flex flex-column align-items-center my-4 py-4' >
+          <h2 className='d-flex text-center justify-content-center fw-bold main-heading' style={{ fontSize: '2.5rem', color: contrastColor }}>Welcome to  <span style={{ paddingLeft: '15px', }}>DERMA QUEST !</span> </h2>
           <h2 className='d-flex pt-4 mt-4' style={{ fontSize: '1.2rem', textAlign: 'justify', lineHeight: '1.5rem' }}>At DermaQuest, we believe that understanding your skin is the first step to achieving a healthy and radiant complexion.
             Our mission is to educate and empower you with the knowledge and tools you need to take the best care of your skin.
             Explore our resources, tips, and expert advice to find out what your skin truly needs.
@@ -60,7 +67,7 @@ function Home() {
       </section>
       {/* Section2 */}
       <section className='gap-4 d-flex flex-column' style={{ padding: '10vh 10vw' }} >
-      <h5 className="card-title">👋 Hi, I'm your personal skin care guide!</h5>
+      <h5 className="card-title" style={{fontSize: '2rem'}}>👋 Hi, I'm your <span style={{fontSize: '2rem'}}>personal skin care guide! </span></h5>
         <p className="card-text">
           Ask me anything about skin health, ingredients, or routines —
           I'm here to help you glow! ✨
@@ -88,7 +95,8 @@ function Home() {
               color: 'black',
               fontSize: '1rem',
               width: '100%',
-              heigth: '100%'
+              heigth: '100%',
+              outline: 'none',
             }}
             onKeyDown={(e) => {
               if (e.key === "Enter" && !e.shiftKey) {
@@ -137,6 +145,7 @@ function Home() {
       {/* section3 - Myths */}
       <Myths />
       <ArticleSection/>
+      <Footer/>
     </div>
   )
 }

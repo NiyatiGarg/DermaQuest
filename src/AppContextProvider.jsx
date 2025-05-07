@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { AppContext } from "./AppContext";
 import skinTan from "./assets/blogSpecificImages/skinTan.png";
 import sundayRitual from "./assets/blogSpecificImages/SundayRitual.png";
@@ -12,9 +12,14 @@ import { ImportantDevices } from "@mui/icons-material";
 import getAiResponse from "./config/gemini";
 
 const AppContextProvider = ({ children }) => {
-  const [pageTheme, setPageTheme] = useState("rgb(238,195,176)");
+  const [pageTheme, setPageTheme] = useState("rgb(238,195,176)"); //main color 
+  const [contrastColor, setContrastColor] = useState("rgb(158, 77, 42)"); // contrasting color for sideNavBar/footer
+
   const [aiResponse, setAiResponse]= useState('');
   const [loading, setLoading]= useState(false);
+
+  const [isSmallScreen, setIsSmallScreen] = useState(false);  // tracking small screen
+  const [openSideNav, setOpenSideNav]= useState(false); // tracking side nav open or close
 
   const myths = [
     {
@@ -390,6 +395,21 @@ const AppContextProvider = ({ children }) => {
     },
   ];
 
+   // Detect screen size on mount and resize
+   useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth < 768); // Adjust the breakpoint as needed
+    };
+    //initial check
+    handleResize();
+
+    //listen for resize events
+    window.addEventListener('resize', handleResize);
+
+    //cleanup on unmount
+    return()=>window.removeEventListener('resize',handleResize);
+  },[]);
+
   const askQuery = async (prompt) => {
     const response = await getAiResponse(prompt);
     setAiResponse(response);
@@ -405,7 +425,10 @@ const AppContextProvider = ({ children }) => {
         mustReadBlogs,
         askQuery,
         aiResponse, setAiResponse,
-        loading, setLoading
+        loading, setLoading,
+        isSmallScreen, setIsSmallScreen,
+        openSideNav, setOpenSideNav,
+        contrastColor, setContrastColor
       }}
     >
       {children}

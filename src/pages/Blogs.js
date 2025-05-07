@@ -4,6 +4,7 @@ import { AppContext } from '../AppContext';
 import Header from './Header';
 
 import { FaSearch } from "react-icons/fa";
+import Footer from './Footer';
 // import Icofont from 'react-icofont';
 
 function Blogs() {
@@ -18,7 +19,7 @@ function Blogs() {
   return (
         <div >
         <Header />
-        <section className='justify-content-center d-flex flex-column' style={{padding: '2rem 10rem'}}>
+        <section className='justify-content-center d-flex flex-column responsive-margin' style={{minHeight: '70vh'}}>
         <h1 style={{fontFamily:'fantasy'}}>Frequently asked topics</h1>
  
         <div
@@ -43,14 +44,18 @@ function Blogs() {
               paddingRight: '30px',
               color: 'black',
               fontSize: '1.2rem',
-              fontFamily: 'cursive',
               textShadow: '1px 1px 2px rgba(0, 0, 0, 0.2)',
 
             }}
           />
           <FaSearch icon="search" className='p-3' style={{ display: 'flex', fontSize: '1.5rem', color: 'black',   textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)', }} />
         </div>
+       
+       <section>
+       <h5>This page is under construction...</h5>
+       </section>
       </section>
+      <Footer/>
     </div>
   )
 }

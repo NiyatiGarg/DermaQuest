@@ -4,11 +4,13 @@ import { useParams } from "react-router-dom";
 import { AppContext } from "../AppContext";
 
 import Header from "./Header";
+import Footer from "./Footer";
+
 
 function SingleBlog() {
   const { id, title } = useParams();
 
-  const { mustReadBlogs } = useContext(AppContext);
+  const { mustReadBlogs, isSmallScreen, contrastColor } = useContext(AppContext);
   const [blog, setBlog] = useState(null);
 
   useEffect(() => {
@@ -21,10 +23,10 @@ function SingleBlog() {
   return (
     <>
       <Header />
-      <div style={{ margin: "10vh 10vw", minHeight: '100vh' , gridTemplateColumns: '1fr 300px',}} className="gap-5 d-flex flex-column">
-        <h1>{blog.title}</h1>
+      <div style={{  minHeight: '100vh' , gridTemplateColumns: '1fr 300px',}} className=" d-flex flex-column responsive-margin">
+        <h1 style={{color: contrastColor, paddingTop: '4rem' }}>{blog.title}</h1>
         <div className="gap-4 d-flex">
-          <div className="flex-grow-1" style={{ textAlign: "start" , lineHeight: '2rem' }}
+          <div className="flex-grow-1 blog-text" style={{ textAlign: "start" , lineHeight: '2rem' }}
           dangerouslySetInnerHTML={{ __html: blog.description }}
           ></div>
           <img
@@ -35,10 +37,12 @@ function SingleBlog() {
               objectFit: "cover",
               width: "300px",
               height: "300px",
+              display: isSmallScreen ? 'none' : 'flex',
             }}
           />
         </div>
       </div>
+     <Footer/>
     </>
   );
 }

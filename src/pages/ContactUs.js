@@ -4,6 +4,7 @@ import { AppContext } from '../AppContext';
 import Header from './Header';
 import { FaLinkedin, FaQuora, FaBlogger, } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
+import Footer from './Footer';
 
 function ContactUs() {
 
@@ -22,24 +23,24 @@ function ContactUs() {
         {/* form */}
         <div className='my-4'>
           <h5 style={{ fontWeight: 'bold ', color: pageTheme }}>Please fill out the form below, and we will get back to you as soon as possible.</h5>
-          <form action="mailto:niyatigarg2002@gmail.com" method="post" enctype="text/plain">
-            <label for="name">Name:</label>
+          <form action="mailto:niyatigarg2002@gmail.com" method="post" enctype="text/plain" className='mt-5'>
+            <label for="name">Name:</label><br />
+            <input type="text" id="name" name="name" required className='d-flex contact-input'/>
             <br />
-            <input type="text" id="name" name="name" required/>
-            <br />
-            <label for="email">Email:</label>
-            <br />
-            <input type="email" id="email" name="email" required
-            /><br />
 
-            <label for="subject">Subject:</label>
+            <label for="email">Email:</label><br />
+            <input type="email" id="email" name="email" required className='d-flex contact-input'/>
             <br />
-            <input type="text" id="subject" name="subject" required /><br />
+
+            <label for="subject">Subject:</label><br />
+            <input type="text" id="subject" name="subject" required className='d-flex contact-input'/>
+            <br />
 
             <label for="message">Message:</label><br />
-            <textarea id="message" name="message" rows="4" required></textarea><br />
+            <textarea id="message" name="message" rows="4" required className='d-flex contact-input'></textarea>
+            <br />
 
-            <input type="submit" value="Submit" />
+            <input type="submit" value="Submit" className='submit-button' style={{border: `2px solid ${pageTheme}`}}/>
           </form>
         </div>
         <hr />
@@ -63,6 +64,7 @@ function ContactUs() {
         <p>At DermaQuest, your satisfaction is our priority. Don’t hesitate to reach out with any questions or concerns. We look forward to assisting
           you on your journey to healthy, radiant skin!</p>
       </div>
+      <Footer/>
     </div>
   )
 }
