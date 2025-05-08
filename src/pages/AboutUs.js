@@ -21,6 +21,9 @@ function AboutUs() {
           around the world. Whether you're dealing with dryness, acne, wrinkles,
           or just aiming for a healthy glow, DermaQuest is here to help.
         </p>
+
+        <section className="bg-light p-4">
+
         <h2 style={{ fontSize: "1.5rem" }} className="my-4">
           Here's what you can find on DermaQuest
         </h2>
@@ -72,6 +75,9 @@ function AboutUs() {
           allowing you to adapt and optimize your skincare regimen..
         </p>
 
+
+        </section>
+       
         <p className="fw-bold my-4">
           At DermaQuest, we believe that knowledge is power. We're dedicated to
           equipping you with the information and recommendations you need to

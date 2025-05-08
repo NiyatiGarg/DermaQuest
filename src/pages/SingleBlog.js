@@ -10,11 +10,11 @@ import Footer from "./Footer";
 function SingleBlog() {
   const { id, title } = useParams();
 
-  const { mustReadBlogs, isSmallScreen, contrastColor } = useContext(AppContext);
+  const { allBlogs, isSmallScreen, contrastColor } = useContext(AppContext);
   const [blog, setBlog] = useState(null);
 
   useEffect(() => {
-    const found = mustReadBlogs.find((item) => item.key === parseInt(id));
+    const found = allBlogs.find((item) => item.key === parseInt(id));
     setBlog(found);
   }, [id]);
 
@@ -29,17 +29,20 @@ function SingleBlog() {
           <div className="flex-grow-1 blog-text" style={{ textAlign: "start" , lineHeight: '2rem' }}
           dangerouslySetInnerHTML={{ __html: blog.description }}
           ></div>
+          {blog.imageUrl &&
           <img
-            src={blog.imageUrl}
-            alt=""
-            style={{
-              boxShadow: "0 4px 8px rgba(0, 0, 0, 0.5)",
-              objectFit: "cover",
-              width: "300px",
-              height: "300px",
-              display: isSmallScreen ? 'none' : 'flex',
-            }}
-          />
+          src={blog.imageUrl}
+          alt=""
+          style={{
+            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.5)",
+            objectFit: "cover",
+            width: "100%",
+            height: "300px",
+            display: isSmallScreen ? 'none' : 'flex',
+          }}
+        />
+        }
+          
         </div>
       </div>
      <Footer/>

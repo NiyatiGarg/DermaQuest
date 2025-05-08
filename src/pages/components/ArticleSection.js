@@ -16,7 +16,7 @@ function ArticleSection() {
         className="justify-content-center my-5 text-start, p-0"
         style={{  borderBottom: "1px solid black" }}
       >
-        Must Read
+        Frequently Asked Topics
       </h2>
       <div className="d-flex gap-4 overflow-scroll default-scrollbar">
         {mustReadBlogs.map((blog) => (

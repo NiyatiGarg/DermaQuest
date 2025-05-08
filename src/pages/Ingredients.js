@@ -11,9 +11,9 @@ import Footer from './Footer';
 
 function Ingredients() {
 
-  const { pageTheme , mustReadBlogs, contrastColor} = useContext(AppContext);
+  const { pageTheme, ingredientBlogs, contrastColor} = useContext(AppContext);
   const [inputValue, setInputValue]= useState('');
-  const [filteredBlogs, setFilteredBlogs] = useState(mustReadBlogs);
+  const [filteredBlogs, setFilteredBlogs] = useState(ingredientBlogs);
 
   const navigate = useNavigate();
   
@@ -23,17 +23,24 @@ function Ingredients() {
 
   useEffect(() => {
     const lowercasedInput = inputValue.toLowerCase();
-    const filtered = mustReadBlogs.filter(blog =>
+    const filtered = ingredientBlogs.filter(blog =>
       blog.title.toLowerCase().includes(lowercasedInput) ||
       blog.description.toLowerCase().includes(lowercasedInput)
     );
     setFilteredBlogs(filtered);
-  }, [inputValue, mustReadBlogs]);
+  }, [inputValue, ingredientBlogs]);
 
   return (
         <div >
         <Header />
         <section className='justify-content-center d-flex flex-column gap-5 responsive-margin' >
+        <h4 className='pt-4'>Know What You're Putting on Your Skin</h4>
+          <p>Behind every effective skincare product is an ingredient doing the hard work. This section breaks down popular skincare ingredients—both modern and natural—so you know exactly what you're applying to your skin and why. <br/><br/>
+          <br/>
+          From powerhouse actives like Hyaluronic Acid and Vitamin C to exfoliants like Salicylic Acid, we explain how these components work, their benefits, who they’re best for, and how to use them safely. Our goal is to help you make informed choices and build a routine that supports your unique skin needs.
+          <br/><br/>Discover the science, the benefits, and the best practices—one ingredient at a time.</p>
+        
+          
         <div
           style={{
             width: '100%',
@@ -76,8 +83,8 @@ function Ingredients() {
             class=" card mb-3 d-flex flex-column p-3 gap-1 blog-cards"
             style={{
               background: pageTheme,
-              
-              boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
+              border: 'none',
+              // boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
             }}
           >
             <div className="d-flex">

@@ -21,23 +21,23 @@ function ContactUs() {
           We'd love to hear from you! <br />Whether you have questions, feedback, or need personalized skincare advice, the DermaQuest team is here to help.
         </h5>
         {/* form */}
-        <div className='my-4'>
+        <div className='my-4 align-items-start justify-content-start d-flex flex-column'>
           <h5 style={{ fontWeight: 'bold ', color: pageTheme }}>Please fill out the form below, and we will get back to you as soon as possible.</h5>
-          <form action="mailto:niyatigarg2002@gmail.com" method="post" enctype="text/plain" className='mt-5'>
+          <form action="mailto:niyatigarg2002@gmail.com" method="post" enctype="text/plain" className='mt-5 bg-light justify-content-center d-flex flex-column p-4' style={{width:" 50%"}}>
             <label for="name">Name:</label><br />
-            <input type="text" id="name" name="name" required className='d-flex contact-input'/>
+            <input type="text" id="name" name="name" required className='d-flex contact-input w-100'/>
             <br />
 
             <label for="email">Email:</label><br />
-            <input type="email" id="email" name="email" required className='d-flex contact-input'/>
+            <input type="email" id="email" name="email" required className='d-flex contact-input w-100 '/>
             <br />
 
             <label for="subject">Subject:</label><br />
-            <input type="text" id="subject" name="subject" required className='d-flex contact-input'/>
+            <input type="text" id="subject" name="subject" required className='d-flex contact-inputw-100'/>
             <br />
 
             <label for="message">Message:</label><br />
-            <textarea id="message" name="message" rows="4" required className='d-flex contact-input'></textarea>
+            <textarea id="message" name="message" rows="4" required className='d-flex contact-input w-100'></textarea>
             <br />
 
             <input type="submit" value="Submit" className='submit-button' style={{border: `2px solid ${pageTheme}`}}/>
