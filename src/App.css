@@ -102,10 +102,13 @@
     width: 100% !important;
   }
   .blog-cards{
-    min-width: 360px;
+    min-width: 100%;
   }
   .card-img{
-    height: 300px;
+    height: auto;
     width: 100%;
+  }
+  .font-mobile{
+    font-size: 0.8rem !important;
   }
 }

@@ -10,6 +10,7 @@ import Header from './Header';
 import Myths from './components/MythSection';
 import ArticleSection from './components/ArticleSection';
 import peach from '../assets/peach.png';
+import leaf from '../assets/leaf.png';
 
 import ReactMarkdown from "react-markdown";
 import SideNav from './components/SideNav';
@@ -47,13 +48,13 @@ function Home() {
   }, [examples.length]);
 
   return (
-    <div className='d-flex flex-column App' style={{ overflow: 'hidden', color: contrastColor }} >
+    <div className='d-flex flex-column App' style={{ overflowX: 'hidden', overflowY: 'visible', color: contrastColor }} >
       <Header />
 
       {/* Section1 */}
       <section className='justify-content-center d-flex flex-column align-items-center bg-light' style={{ padding: '2vh 10vw', height: '100%', background: '' }}>
        
-       
+      
         
 
         {/* headline */}
@@ -66,8 +67,26 @@ function Home() {
         </div>
       </section>
       {/* Section2 */}
-      <section className='gap-4 d-flex flex-column' style={{ padding: '10vh 10vw' }} >
-      <h5 className="card-title" style={{fontSize: '2rem'}}>👋 Hi, I'm your <span style={{fontSize: '2rem'}}>personal skin care guide! </span></h5>
+      <section  
+
+      className='d-flex input-section'
+       style={{
+    position: 'relative',
+    minHeight: '60vh',
+    width: '100vw',
+    backgroundImage: `url(${leaf})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'right bottom',
+    // backgroundSize: 'contain', // or 'cover' if you want it to fill
+    zIndex: 0,
+    backgroundSize: '80% 200%', 
+    right: 0,
+   
+    top: 0
+  }}>
+    <div style={{background: 'white', opacity: 0.8, zIndex: -1,  backgroundSize: '100%', width: '100%', minHeight: '100vh'}} className='input-section-layer'>
+    <div className='gap-4 d-flex flex-column' style={{ padding: '10vh 10vw', zIndex: 2, width: '100%' }}>
+        <h5 className="card-title" style={{fontSize: '2rem'}}>👋 Hi, I'm your <span style={{fontSize: '2rem'}} className='card-title-main' >personal skin care guide! </span></h5>
         <p className="card-text">
           Ask me anything about skin health, ingredients, or routines —
           I'm here to help you glow! ✨
@@ -75,12 +94,12 @@ function Home() {
         {/* searchbar */}
         <div
           style={{
-            width: '100%',
+            width: '60%',
             alignItems: 'center',
             color: 'lightGrey',
             border: '1px solid black',
 
-          }} className='d-flex mt-4 '>
+          }} className='d-flex mt-4 input-bar-width'>
           <input
             autofocus={false}
             type="text"
@@ -140,6 +159,14 @@ function Home() {
           {aiResponse}
         </ReactMarkdown> 
          </>}
+
+        </div>
+
+    </div>
+        
+        {/* <img src={leaf} style={{height: '100%', width: '600px', zIndex: '-2', objectFit: 'cover', 
+     position: 'fixed', right: '0', bottom: 0}}/> */}
+      
         {/* </div> */}
       </section>
       {/* section3 - Myths */}

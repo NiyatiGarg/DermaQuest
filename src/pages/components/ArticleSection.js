@@ -21,7 +21,7 @@ function ArticleSection() {
       <div className="d-flex gap-4 overflow-scroll default-scrollbar">
         {mustReadBlogs.map((blog) => (
           <div
-            class=" card mb-3 d-flex flex-column p-3 gap-1 blog-cards"
+            className="card mb-3 d-flex flex-column p-3 gap-1 blog-cards"
             style={{
               background: pageTheme,
               boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
@@ -34,10 +34,9 @@ function ArticleSection() {
                 alt="img"
               />
             </div>
-            <div class="d-flex flex-column justify-content-between" style={{ height: "100%" }}>
-                <h5 class="card-title fw-bold two-line-text" style={{cursor: 'pointer'}} title={blog.title} >{blog.title}</h5>
-              <div class="">
-
+            <div className="d-flex flex-column justify-content-between" style={{ height: "100%" }}>
+                <h5 className="card-title fw-bold two-line-text" style={{cursor: 'pointer'}} title={blog.title} >{blog.title}</h5>
+              <div className="">
                 <p
                   className="card-text three-line-text"
                   dangerouslySetInnerHTML={{

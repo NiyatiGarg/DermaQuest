@@ -151,12 +151,13 @@ function Quiz() {
     setLoading,
     aiResponse,
     setAiResponse,
-  } = useContext(AppContext);
+  } = useContext(AppContext); 
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [answers, setAnswers] = useState([]);
   const [showSubmitButton, setShowSubmitButton] = useState(false);
 
   const [quizStarted, setQuizStarted] = useState(false);
+
+  const [answers, setAnswers] = useState([]);
   const [selectedIndex, setSelectedIndex] = useState(null);
 
   const handleAnswer = async (option, index) => {

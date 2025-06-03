@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, useContext } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import Logo from '../DermaQuest.svg';
+import Logo from '../aa.svg';
 
 import { AppContext } from '../AppContext';
 import './Header.css';
@@ -50,7 +50,7 @@ const currentPath = location.pathname;
         
         <>
         <header className="d-flex align-items-center justify-content-between parent" style={{ display: 'flex', padding: '0vh 10vw', backgroundColor: pageTheme, overflow: 'scroll' }}>
-                <img src={Logo} style={{height: '72px', padding: '5px'}} alt='appLogo' className='appLogo'/>
+                <img src={Logo} style={{height: '72px', padding: '5px', background: 'white'}} alt='appLogo' className='appLogo my-2'/>
             <nav className='d-flex align-items-center ' style={{ gap: '3vw' }}>
                 <NavLink className={({ isActive }) => isActive ? "nav-link active-nav-link font-mobile" : "nav-link font-mobile"} exact to="/" >Home</NavLink>
                 <NavLink className={({ isActive }) => isActive ? "nav-link active-nav-link font-mobile" : "nav-link font-mobile"} exact to="/blogs">Blogs</NavLink>

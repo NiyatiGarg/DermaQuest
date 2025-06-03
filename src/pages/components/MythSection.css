@@ -1,0 +1,10 @@
+ /* Media query for small screens (phones) */
+ @media (max-width: 767px) {
+.myth-title{
+    font-size: 1rem !important;
+}
+    .myth-text{
+        font-size: 0.9rem !important;
+    }
+
+ }

@@ -10,6 +10,8 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import myth from '../../assets/myth.png';
 import { RiH2 } from 'react-icons/ri';
 
+import './MythSection.css';
+
 import { RiArrowDownSLine } from "react-icons/ri";
 
 const Myths=()=>{
@@ -48,10 +50,10 @@ const Myths=()=>{
                 // id="panel-header"
                 className='d-flex justify-content-between w-100'
                 >
-                  <Typography style={{ fontSize: '1.2rem', fontWeight: '30', justifyContent: 'space-between' , display: 'flex', width: '100%'}}><span> {myth.title}</span> <RiArrowDownSLine style={{fontSize: '2rem'}}/></Typography>
+                  <Typography className='myth-title' style={{ fontSize: '1.2rem', fontWeight: '30', justifyContent: 'space-between' , display: 'flex', width: '100%'}}><span> {myth.title}</span> <RiArrowDownSLine style={{fontSize: '2rem'}}/></Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                  <Typography className='p-2 text-justify' style={{  fontSize: '1.2rem' }}>
+                  <Typography className='p-2 text-justify myth-text' style={{  fontSize: '1.2rem' }}>
                     {myth.explaination}
                   </Typography>
                 </AccordionDetails>

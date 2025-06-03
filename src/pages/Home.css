@@ -27,9 +27,30 @@
 
   /* Media query for small screens (phones) */
 @media (max-width: 767px) {
+
+  .input-section{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+  }
     .main-heading{
         display: flex;
         flex-direction: column;
+        font-size: 2rem !important;
+      }
+      .card-title{
+        font-size: 1.5rem !important;
+        text-align: center;
+      }
+      .card-title-main{
+        font-size: 1.5rem !important;
+      }
+      /* .input-section-layer{
+        height: 100% !important;
+      } */
+
+      .input-bar-width{
+        width: 100% !important;
       }
    
 }
