@@ -4,7 +4,7 @@ import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
-import myth from '../../assets/myth.png';
+import girlImg from '../../assets/girlImg.png';
 import { RiArrowDownSLine } from "react-icons/ri";
 import { FaLightbulb } from "react-icons/fa";
 import './MythSection.css';
@@ -57,7 +57,7 @@ const Myths = () => {
           
           <div className='myths-image-container'>
             <img 
-              src={myth} 
+              src={girlImg} 
               alt='Debunking skincare myths illustration' 
               className='myths-image'
             />

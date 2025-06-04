@@ -242,6 +242,7 @@
 .search-wrapper:focus-within {
   box-shadow: 0 8px 30px rgba(var(--theme-color-dark-rgb), 0.15);
   transform: translateY(-2px);
+  border: 2px solid var(--theme-color-dark);
 }
 
 .search-input {
@@ -251,10 +252,15 @@
   background: transparent;
   font-size: 1.1rem;
   color: var(--contrast-color);
+  outline: none;
 }
 
 .search-input::placeholder {
   color: rgba(var(--contrast-color-rgb), 0.5);
+}
+
+.search-input:focus {
+  box-shadow: none;
 }
 
 .search-button {
