@@ -1,19 +1,12 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { AppContext } from '../AppContext';
 import './Home.css';
-
-// import Icofont from 'react-icofont';
-import { FaSearch } from "react-icons/fa";
-import { RiMenu2Fill } from "react-icons/ri";
-
+import { FaSearch, FaRobot } from "react-icons/fa";
+import { BsQuestionLg } from "react-icons/bs";
 import Header from './Header';
 import Myths from './components/MythSection';
 import ArticleSection from './components/ArticleSection';
-import peach from '../assets/peach.png';
-import leaf from '../assets/leaf.png';
-
 import ReactMarkdown from "react-markdown";
-import SideNav from './components/SideNav';
 import Footer from './Footer';
 
 const examples = [
@@ -27,154 +20,203 @@ const examples = [
 ];
 
 function Home() {
-
-  const { pageTheme, askQuery, aiResponse, setAiResponse, loading, setLoading, isSmallScreen, openSideNav, setOpenSideNav, contrastColor } = useContext(AppContext);
+  const { 
+    pageTheme, 
+    askQuery, 
+    aiResponse, 
+    loading, 
+    setLoading, 
+    contrastColor 
+  } = useContext(AppContext);
+  
   const [question, setQuestion] = useState("");
-  const [answer, setAnswer] = useState(null);
-  // const [inputValue, setInputValue] = useState('')
   const [currentIndex, setCurrentIndex] = useState(0);
-
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [shouldShowButton, setShouldShowButton] = useState(false);
 
   const handleInputChange = (e) => {
-    setQuestion(e.target.value)
-  }
+    setQuestion(e.target.value);
+  };
+
+  const handleSearch = () => {
+    if (question.trim()) {
+      askQuery(question);
+      setLoading(true);
+    }
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % examples.length);
-    }, 5000); // Changes every 3 seconds
+    }, 5000);
 
-    return () => clearInterval(interval); // Clean up on unmount
+    return () => clearInterval(interval);
   }, [examples.length]);
 
+  // Reset expansion state when new response comes in
+  useEffect(() => {
+    if (aiResponse) {
+      setIsExpanded(false);
+      // Check if response is long enough to need the show more button
+      const lineCount = aiResponse.split('\n').length;
+      setShouldShowButton(lineCount > 30);
+    }
+  }, [aiResponse]);
+
+  const toggleExpansion = () => {
+    setIsExpanded(!isExpanded);
+  };
+
   return (
-    <div className='d-flex flex-column App' style={{ overflowX: 'hidden', overflowY: 'visible', color: contrastColor }} >
+    <div className="app-container" style={{ color: contrastColor }}>
       <Header />
 
-      {/* Section1 */}
-      <section className='justify-content-center d-flex flex-column align-items-center bg-light' style={{ padding: '2vh 10vw', height: '100%', background: '' }}>
-       
-      
-        
-
-        {/* headline */}
-        <div className='d-flex flex-column align-items-center my-4 py-4' >
-          <h2 className='d-flex text-center justify-content-center fw-bold main-heading' style={{ fontSize: '2.5rem', color: contrastColor }}>Welcome to  <span style={{ paddingLeft: '15px', }}>DERMA QUEST !</span> </h2>
-          <h2 className='d-flex pt-4 mt-4' style={{ fontSize: '1.2rem', textAlign: 'justify', lineHeight: '1.5rem' }}>At DermaQuest, we believe that understanding your skin is the first step to achieving a healthy and radiant complexion.
+      {/* Hero Section */}
+      <section className="hero-section">
+        <div className="hero-content">
+          <h1 className="hero-title">
+            Welcome to <span className="brand-highlight">DERMA QUEST!</span>
+          </h1>
+          <p className="hero-description">
+            At DermaQuest, we believe that understanding your skin is the first step to achieving a healthy and radiant complexion.
             Our mission is to educate and empower you with the knowledge and tools you need to take the best care of your skin.
             Explore our resources, tips, and expert advice to find out what your skin truly needs.
-          </h2>
+          </p>
         </div>
       </section>
-      {/* Section2 */}
-      <section  
 
-      className='d-flex input-section'
-       style={{
-    position: 'relative',
-    minHeight: '60vh',
-    width: '100vw',
-    backgroundImage: `url(${leaf})`,
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'right bottom',
-    // backgroundSize: 'contain', // or 'cover' if you want it to fill
-    zIndex: 0,
-    backgroundSize: '80% 200%', 
-    right: 0,
-   
-    top: 0
-  }}>
-    <div style={{background: 'white', opacity: 0.8, zIndex: -1,  backgroundSize: '100%', width: '100%', minHeight: '100vh'}} className='input-section-layer'>
-    <div className='gap-4 d-flex flex-column' style={{ padding: '10vh 10vw', zIndex: 2, width: '100%' }}>
-        <h5 className="card-title" style={{fontSize: '2rem'}}>👋 Hi, I'm your <span style={{fontSize: '2rem'}} className='card-title-main' >personal skin care guide! </span></h5>
-        <p className="card-text">
-          Ask me anything about skin health, ingredients, or routines —
-          I'm here to help you glow! ✨
-        </p>
-        {/* searchbar */}
-        <div
-          style={{
-            width: '60%',
-            alignItems: 'center',
-            color: 'lightGrey',
-            border: '1px solid black',
+      {/* AI Consultation Section */}
+      <section className="consultation-section">
+        <div className="consultation-container">
+          {/* Question Mark Decoration */}
+          <div className="question-mark-decoration">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <path d="M45,70 L45,65 C45,55 55,52.5 55,42.5 C55,35 50,30 42.5,30 C35,30 30,35 30,42.5 M42.5,80 L42.5,85" 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round"/>
+            </svg>
+          </div>
 
-          }} className='d-flex mt-4 input-bar-width'>
+          {/* AI Assistant Introduction */}
+          <div className="assistant-intro">
+            <div className="welcome-container">
+              <div className="welcome-badge">
+                <span className="badge-text">AI Skincare Assistant</span>
+              </div>
+              <h2 className="welcome-title">
+                <span className="wave-emoji">👋</span> 
+                Hello! I'm Your Personal
+                <span className="highlight-text"> Skincare Guide</span>
+              </h2>
+              <div className="welcome-features">
+                <div className="feature-item">
+                  <span className="feature-icon">💫</span>
+                  <span className="feature-text">Expert Skincare Advice</span>
+                </div>
+                <div className="feature-item">
+                  <span className="feature-icon">🧪</span>
+                  <span className="feature-text">Ingredient Analysis</span>
+                </div>
+                <div className="feature-item">
+                  <span className="feature-icon">✨</span>
+                  <span className="feature-text">Personalized Routines</span>
+                </div>
+              </div>
+              <p className="welcome-text">
+                Ready to discover your perfect skincare routine? Ask me anything about skin health, 
+                ingredients, or routines — I'm here to help you achieve your best skin ever!
+              </p>
+            </div>
+          </div>
+
+          {/* Search Input */}
+          <div className="search-container">
+            <div className="search-wrapper">
           <input
-            autofocus={false}
             type="text"
             value={question}
-            onChange={e => handleInputChange(e)}
+                onChange={handleInputChange}
             placeholder={examples[currentIndex]}
-            className="px-4 py-2"
-            style={{
-              backgroundColor: 'transparent',
-              border: 'none',
-              paddingRight: '30px',
-              color: 'black',
-              fontSize: '1rem',
-              width: '100%',
-              heigth: '100%',
-              outline: 'none',
-            }}
+                className="search-input"
             onKeyDown={(e) => {
               if (e.key === "Enter" && !e.shiftKey) {
                 e.preventDefault();
-                askQuery(question);
-              setLoading(true);
+                    handleSearch();
               }
             }}
           />
-         <FaSearch 
-            onClick={() => {
-              askQuery(question);
-              setLoading(true);
-            }}
-            className='m-2'
-            style={{ display: 'flex', fontSize: '1.5rem', color: 'grey', fontWeight: '20'}} />
+              <button 
+                className="search-button"
+                onClick={handleSearch}
+                aria-label="Ask question"
+              >
+                <FaSearch />
+              </button>
+            </div>
+            <div className="example-text">
+              Try asking about: "{examples[currentIndex]}"
+            </div>
         </div>
        
-          {loading ?
-           <div className="loader">
-           <hr />
-           <hr />
-           <hr />
-         </div>
-         : 
-         <>
-
-          <ReactMarkdown
-          style={{ 
-            // zIndex: 2, 
-          //  background: '#F8F9FA', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.4)', overflow:'scroll', maxHeight: '550px'
-          }}
-        
-          components={{
-            p: ({ children }) => <p className="mb-2 text-body">{children}</p>,
-            strong: ({ children }) => <strong className="fw-bold">{children}</strong>,
-            em: ({ children }) => <em className="fst-italic">{children}</em>,
-            code: ({ children }) => <code className="bg-light px-1 rounded">{children}</code>,
-          }}
-        >
-          {aiResponse}
-        </ReactMarkdown> 
-         </>}
-
+          {/* Chat Response Area */}
+          <div className="chat-container">
+            {loading ? (
+              <div className="loader-container">
+                <div className="loader">
+                  <div className="loader-dot"></div>
+                  <div className="loader-dot"></div>
+                  <div className="loader-dot"></div>
+                  <span className="loader-text">Getting your skincare advice...</span>
+                </div>
+              </div>
+            ) : (
+              aiResponse && (
+                <div className="chat-response">
+                  <div className="response-header">
+                    <FaRobot className="bot-icon" />
+                    <span>AI Skincare Expert</span>
+                  </div>
+                  <div className={`response-content ${!isExpanded ? 'collapsed' : ''}`}>
+                    <ReactMarkdown
+                      components={{
+                        p: ({ children }) => (
+                          <p className="response-paragraph">{children}</p>
+                        ),
+                        strong: ({ children }) => (
+                          <strong className="response-bold">{children}</strong>
+                        ),
+                        em: ({ children }) => (
+                          <em className="response-italic">{children}</em>
+                        ),
+                        code: ({ children }) => (
+                          <code className="response-code">{children}</code>
+                        ),
+                      }}
+                    >
+                      {aiResponse}
+                    </ReactMarkdown>
+                  </div>
+                  {shouldShowButton && (
+                    <button 
+                      className="show-more-button"
+                      onClick={toggleExpansion}
+                      aria-label={isExpanded ? "Show less" : "Show more"}
+                    >
+                      {isExpanded ? "Show Less" : "Show More"}
+                    </button>
+                  )}
+                </div>
+              )
+            )}
+          </div>
         </div>
-
-    </div>
-        
-        {/* <img src={leaf} style={{height: '100%', width: '600px', zIndex: '-2', objectFit: 'cover', 
-     position: 'fixed', right: '0', bottom: 0}}/> */}
-      
-        {/* </div> */}
       </section>
-      {/* section3 - Myths */}
+
       <Myths />
-      <ArticleSection/>
-      <Footer/>
+      <ArticleSection />
+      <Footer />
     </div>
-  )
+  );
 }
 
 export default Home;

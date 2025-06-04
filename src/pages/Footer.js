@@ -1,69 +1,93 @@
 // Header.js
 
-import React, { useEffect, useState, useContext } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { NavLink } from 'react-router-dom';
 import Logo from '../aa.svg';
-
 import { AppContext } from '../AppContext';
-import './Header.css';
-import SideNav from './components/SideNav';
-
-import { RiMenu2Fill } from "react-icons/ri";
-
+import './Footer.css';
+import { FaHome, FaBookOpen, FaFlask, FaQuestionCircle, FaInfoCircle, FaEnvelope } from 'react-icons/fa';
 
 const Footer = () => {
+  const { contrastColor } = useContext(AppContext);
 
-    const { pageTheme, setPageTheme, isSmallScreen, openSideNav, setOpenSideNav, contrastColor } = useContext(AppContext);
+  const navigationLinks = [
+    { path: "/", label: "Home", icon: FaHome },
+    { path: "/blogs", label: "Blogs", icon: FaBookOpen },
+    { path: "/ingredients", label: "Ingredients", icon: FaFlask },
+    { path: "/quiz", label: "Take a Quiz", icon: FaQuestionCircle },
+    { path: "/about", label: "About Us", icon: FaInfoCircle },
+    { path: "/contact", label: "Contact Us", icon: FaEnvelope }
+  ];
 
+  return (
+    <footer className="site-footer" style={{ '--theme-color': contrastColor }}>
+      <div className="footer-content">
+        <div className="footer-main">
+          {/* Brand Section */}
+          <div className="footer-brand">
+            <img 
+              src={Logo} 
+              alt="DermaQuest Logo" 
+              className="footer-logo"
+            />
+            <p className="brand-description">
+              Your trusted source for skincare knowledge and guidance.
+            </p>
+          </div>
 
-    return (
-        
-        <div className='d-flex flex-column gap-4' style={{ background: contrastColor, color: 'white'}}>
-        <div className="d-flex align-items-start justify-content-between gap-4" style={{ display: 'flex', padding: '5vh 10vw'}}>
-                <img src={Logo} style={{height: '72px', padding: '5px', background: 'white'}}  alt='appLogo' className='appLogo'/>
-            <div className= 'd-flex'>
-            <nav className='d-flex align-items-center flex-column ' style={{ gap: '2vw', fontSize: '1.2vw' }}>
-                <NavLink className={({ isActive }) => isActive ? "nav-link active-nav-link font-mobile" : "nav-link font-mobile"} exact to="/" >Home</NavLink>
-                <NavLink className={({ isActive }) => isActive ? "nav-link active-nav-link font-mobile" : "nav-link font-mobile"} exact to="/blogs">Blogs</NavLink>
-                <NavLink className={({ isActive }) => isActive ? "nav-link active-nav-link font-mobile" : "nav-link font-mobile"} exact to="/ingredients" >Ingredients</NavLink>
-                </nav>
-            <nav className='d-flex align-items-center flex-column ' style={{ gap: '2vw', fontSize: '1.2vw' }}>
-                <NavLink className={({ isActive }) => isActive ? "nav-link active-nav-link font-mobile" : "nav-link font-mobile"} to="/quiz" >Take a Quiz</NavLink>
-                <NavLink className={({ isActive }) => isActive ? "nav-link active-nav-link font-mobile" : "nav-link font-mobile"} to="/about" >About Us</NavLink>
-                <NavLink className={({ isActive }) => isActive ? "nav-link active-nav-link font-mobile" : "nav-link font-mobile"} to="/contact" >Contact Us</NavLink>
-            </nav>
+          {/* Navigation Sections */}
+          <div className="footer-navigation">
+            <div className="nav-section">
+              <h3 className="nav-title">Quick Links</h3>
+              <nav className="footer-nav">
+                {navigationLinks.slice(0, 3).map(({ path, label, icon: Icon }) => (
+                  <NavLink 
+                    key={path}
+                    to={path}
+                    className={({ isActive }) => 
+                      `footer-link ${isActive ? 'footer-link-active' : ''}`
+                    }
+                  >
+                    <Icon className="nav-icon" />
+                    {label}
+                  </NavLink>
+                ))}
+              </nav>
             </div>
-            
-            
-            
-            
-        </div>
-        <hr /> 
-        <div className='justify-content-center d-flex' style={{padding: '1vh 10vw'}}>
-                <p className=' d-flex text-center ' style={{fontSize: '0.7rem'}} > @ 2025 Copyright: This site is intended for IN consumers. Cookies and related technology are used for advertising. To learn more, visit AdChoices and our privacy policy</p>
+
+            <div className="nav-section">
+              <h3 className="nav-title">Resources</h3>
+              <nav className="footer-nav">
+                {navigationLinks.slice(3).map(({ path, label, icon: Icon }) => (
+                  <NavLink 
+                    key={path}
+                    to={path}
+                    className={({ isActive }) => 
+                      `footer-link ${isActive ? 'footer-link-active' : ''}`
+                    }
+                  >
+                    <Icon className="nav-icon" />
+                    {label}
+                  </NavLink>
+                ))}
+              </nav>
             </div>
-
-        {/* menuIcon for mobile view
-              {isSmallScreen?
-                <>
-                <div className='align-items-start justify-content-start d-flex p-4' style={{}}>
-                    <RiMenu2Fill style={{fontSize: '2.5rem'}} onClick={()=>setOpenSideNav(!openSideNav)}/>
-                  </div>
-                  {openSideNav?
-                    <>
-                    <SideNav/>
-                    </>
-                  :
-                  null
-                  }
-                </>
-              
-                :null
-              } */}
+          </div>
         </div>
 
-
-    );
+        {/* Footer Bottom */}
+        <div className="footer-bottom">
+          <p className="copyright">
+            © {new Date().getFullYear()} DermaQuest. All rights reserved.
+          </p>
+          <p className="legal-text">
+            This site is intended for IN consumers. Cookies and related technology are used for advertising. 
+            To learn more, visit <a href="#" className="legal-link">AdChoices</a> and our <a href="#" className="legal-link">Privacy Policy</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
 }
 
 export default Footer;

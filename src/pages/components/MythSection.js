@@ -1,69 +1,76 @@
-import React, {useContext} from 'react';
-
+import React, { useContext } from 'react';
 import { AppContext } from '../../AppContext';
-
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import myth from '../../assets/myth.png';
-import { RiH2 } from 'react-icons/ri';
-
+import { RiArrowDownSLine } from "react-icons/ri";
+import { FaLightbulb } from "react-icons/fa";
 import './MythSection.css';
 
-import { RiArrowDownSLine } from "react-icons/ri";
-
-const Myths=()=>{
-
-    const { pageTheme, myths, isSmallScreen } = useContext(AppContext);
+const Myths = () => {
+  const { pageTheme, myths, isSmallScreen } = useContext(AppContext);
 
   return (
-    <section className='justify-content-center d-flex flex-column ' style={{ padding: '0vh 10vw' , background: pageTheme}}>
-        
-        <h2 className='d-flex justify-content-center my-5 text-center' 
-        >
-          Busting Myths about Skincare
+    <section className='myths-section'>
+      <div className='myths-container'>
+        <h2 className='myths-title'>
+          <FaLightbulb className="title-icon" />
+          Busting Common Skincare Myths
         </h2>
-        <div className='d-flex align-items-end ' style={{flexDirection: isSmallScreen? 'column':'row' }}>
-          <div className='col-md-6 dropdown-width' style={{margin: '2rem 0 2rem 0'}}>
+        
+        <div className='myths-content'>
+          <div className='myths-list'>
             {myths.map((myth, index) => (
               <Accordion
-                style={{
-                  // border: `2px solid ${pageTheme}`,
-                  borderRadius: '10px',
-                  background: 'offwhite',
-                  // boxShadow: `0 0 5px ${pageTheme}`,
-                }}
+                key={index}
+                className='myth-accordion'
                 sx={{
                   '&:before': {
-                    display: 'none', // Remove the divider line
+                    display: 'none',
                   },
                 }}
-                // onClick={openMythById(index)}
-
-                className='my-2 p-2 d-flex flex-column align-items-start '
               >
                 <AccordionSummary
-                // // expandIcon={<ExpandMoreIcon />}
-                // aria-controls="panel-content"
-                // id="panel-header"
-                className='d-flex justify-content-between w-100'
+                  expandIcon={<RiArrowDownSLine className="expand-icon" />}
+                  className='myth-summary'
                 >
-                  <Typography className='myth-title' style={{ fontSize: '1.2rem', fontWeight: '30', justifyContent: 'space-between' , display: 'flex', width: '100%'}}><span> {myth.title}</span> <RiArrowDownSLine style={{fontSize: '2rem'}}/></Typography>
+                  <div className="myth-header">
+                    <div className="myth-badge">MYTH #{index + 1}</div>
+                    <Typography className='myth-title-text'>
+                      {myth.title}
+                    </Typography>
+                  </div>
                 </AccordionSummary>
-                <AccordionDetails>
-                  <Typography className='p-2 text-justify myth-text' style={{  fontSize: '1.2rem' }}>
-                    {myth.explaination}
-                  </Typography>
+                <AccordionDetails className='myth-details'>
+                  <div className="truth-section">
+                    <div className="truth-badge">THE TRUTH</div>
+                    <Typography className='myth-explanation'>
+                      {myth.explaination}
+                    </Typography>
+                  </div>
                 </AccordionDetails>
               </Accordion>
             ))}
           </div>
-          <img src={myth} alt={'myths about skincare'} style={{ height: isSmallScreen? '300px':'520px', width: isSmallScreen? '120%': '60%', zIndex: 0 }} />
+          
+          <div className='myths-image-container'>
+            <img 
+              src={myth} 
+              alt='Debunking skincare myths illustration' 
+              className='myths-image'
+            />
+            <div className="image-overlay">
+              <p className="overlay-text">
+                Get the facts right about skincare
+              </p>
+            </div>
           </div>
-      </section>
-  )
+        </div>
+      </div>
+    </section>
+  );
 }
 
 export default Myths;
