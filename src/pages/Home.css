@@ -887,3 +887,213 @@
   }
 }
 
+/* AI Answer Styles - Isolated from other UI */
+.ai-answer-container {
+  position: relative;
+  margin-top: 2rem;
+  font-family: inherit;
+}
+
+.ai-answer-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid rgba(var(--theme-color-rgb), 0.2);
+  color: var(--theme-color);
+}
+
+.ai-answer-bot-icon {
+  font-size: 1.8rem;
+  color: var(--theme-color);
+  animation: pulseIcon 2s ease-in-out infinite;
+}
+
+.ai-answer-content {
+  position: relative;
+  padding-left: 3rem;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  color: var(--contrast-color);
+}
+
+.ai-answer-inner {
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ai-answer-content.ai-answer-collapsed .ai-answer-inner {
+  max-height: 300px;
+  overflow: hidden;
+}
+
+.ai-answer-content.ai-answer-expanded .ai-answer-inner {
+  max-height: none;
+}
+
+.ai-answer-paragraph {
+  margin-bottom: 1rem;
+  line-height: 1.8;
+  color: var(--contrast-color);
+  position: relative;
+  opacity: 0.95;
+}
+
+.ai-answer-paragraph::before {
+  content: '';
+  position: absolute;
+  left: -3rem;
+  top: 0.5rem;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--theme-color);
+  transition: all 0.3s ease;
+}
+
+.ai-answer-bold {
+  color: var(--theme-color);
+  font-weight: 600;
+}
+
+.ai-answer-italic {
+  color: var(--contrast-color);
+  font-style: italic;
+  opacity: 0.9;
+}
+
+.ai-answer-code {
+  background: var(--contrast-color);
+  color: #ffffff;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-family: monospace;
+  font-size: 0.9rem;
+}
+
+/* Fade Overlay */
+.ai-answer-fade-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.8) 30%,
+    rgba(255, 255, 255, 0.95) 70%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  pointer-events: none;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 20px;
+}
+
+.ai-answer-fade-dots {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.ai-answer-fade-dots span {
+  width: 6px;
+  height: 6px;
+  background: var(--theme-color);
+  border-radius: 50%;
+  opacity: 0.5;
+  animation: dotPulse 1.5s ease-in-out infinite;
+}
+
+.ai-answer-fade-dots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.ai-answer-fade-dots span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* Show More Button */
+.ai-answer-show-more {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 1rem auto;
+  padding: 0.8rem 2rem;
+  background: transparent;
+  border: 2px solid var(--theme-color);
+  color: var(--theme-color);
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.ai-answer-show-more:hover {
+  background: var(--theme-color);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(var(--theme-color-rgb), 0.2);
+}
+
+.ai-answer-lines-count {
+  font-size: 0.85rem;
+  opacity: 0.9;
+  margin-left: 5px;
+  color: var(--theme-color);
+  background: rgba(var(--theme-color-rgb), 0.1);
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+/* Answer Section Animations */
+@keyframes pulseIcon {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes dotPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.8;
+  }
+}
+
+/* Answer Section Media Queries */
+@media (max-width: 768px) {
+  .ai-answer-content {
+    padding-left: 2rem;
+  }
+
+  .ai-answer-paragraph::before {
+    left: -2rem;
+    width: 6px;
+    height: 6px;
+  }
+
+  .ai-answer-show-more {
+    width: 100%;
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .ai-answer-content.ai-answer-collapsed .ai-answer-inner {
+    max-height: 200px;
+  }
+
+  .ai-answer-fade-overlay {
+    height: 100px;
+  }
+}
+

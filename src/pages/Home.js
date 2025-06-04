@@ -196,37 +196,37 @@ function Home() {
               </div>
             ) : (
               aiResponse && (
-                <div className="chat-response">
-                  <div className="response-header">
-                    <FaRobot className="bot-icon" />
+                <div className="ai-answer-container">
+                  <div className="ai-answer-header">
+                    <FaRobot className="ai-answer-bot-icon" />
                     <span>AI Skincare Expert</span>
-         </div>
+                  </div>
                   <div 
-                    className={`response-content ${!isExpanded ? 'collapsed' : 'expanded'}`}
+                    className={`ai-answer-content ${!isExpanded ? 'ai-answer-collapsed' : 'ai-answer-expanded'}`}
                   >
-                    <div className="response-inner">
-          <ReactMarkdown
-          components={{
+                    <div className="ai-answer-inner">
+                      <ReactMarkdown
+                        components={{
                           p: ({ children }) => (
-                            <p className="response-paragraph">{children}</p>
+                            <p className="ai-answer-paragraph">{children}</p>
                           ),
                           strong: ({ children }) => (
-                            <strong className="response-bold">{children}</strong>
+                            <strong className="ai-answer-bold">{children}</strong>
                           ),
                           em: ({ children }) => (
-                            <em className="response-italic">{children}</em>
+                            <em className="ai-answer-italic">{children}</em>
                           ),
                           code: ({ children }) => (
-                            <code className="response-code">{children}</code>
+                            <code className="ai-answer-code">{children}</code>
                           ),
-          }}
-        >
-          {aiResponse}
-        </ReactMarkdown> 
+                        }}
+                      >
+                        {aiResponse}
+                      </ReactMarkdown>
                     </div>
                     {shouldShowButton && !isExpanded && (
-                      <div className="fade-overlay">
-                        <div className="fade-dots">
+                      <div className="ai-answer-fade-overlay">
+                        <div className="ai-answer-fade-dots">
                           <span></span>
                           <span></span>
                           <span></span>
@@ -234,7 +234,25 @@ function Home() {
                       </div>
                     )}
                   </div>
-                  {shouldShowButton && renderShowMoreButton()}
+                  {shouldShowButton && (
+                    <button 
+                      className={`ai-answer-show-more ${isExpanded ? 'ai-answer-expanded' : ''}`}
+                      onClick={toggleExpansion}
+                      aria-label={isExpanded ? "Show less" : "Show more"}
+                    >
+                      <span className="ai-answer-button-text">
+                        {isExpanded ? "Show Less" : "Show More"}
+                      </span>
+                      <span className="ai-answer-button-icon">
+                        {isExpanded ? <FaChevronUp /> : <FaChevronDown />}
+                      </span>
+                      {!isExpanded && (
+                        <span className="ai-answer-lines-count">
+                          ({aiResponse.split('\n').length - 15} more lines)
+                        </span>
+                      )}
+                    </button>
+                  )}
                 </div>
               )
             )}
