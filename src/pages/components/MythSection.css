@@ -2,7 +2,8 @@
 .myths-section {
   padding: 6rem 0;
   padding-left: 5rem;
-  background: var(--theme-color-dark);
+  padding-right: 5rem;
+  background: var(--theme-color);
   position: relative;
   overflow: hidden;
 }
@@ -47,7 +48,7 @@
 /* Image Section */
 .myths-image-container {
   position: relative;
-  width: 400px;
+  width: 30%;
   height: 600px;
   border-radius: 40px;
   overflow: hidden;
@@ -66,7 +67,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: 80% center;
   transition: transform 0.5s ease;
 }
 
@@ -97,7 +98,7 @@
   color: #ffffff;
   font-size: 1.4rem;
   font-weight: 700;
-  line-height: 1.4;
+  line-height: 1;
   transform: translateY(20px);
   transition: transform 0.4s ease;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -112,7 +113,7 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  max-width: 650px;
+  max-width: 50%;
 }
 
 .myth-accordion {
@@ -144,7 +145,7 @@
 }
 
 .myth-badge {
-  background: var(--theme-color-dark);
+  background: #592A15;
   color: #ffffff;
   padding: 0.4rem 0.8rem;
   border-radius: 20px;
@@ -155,16 +156,13 @@
   white-space: nowrap;
 }
 
-/* Darker badge for first myth */
-.myths-list .myth-accordion:first-child .myth-badge {
-  background: var(--theme-color-dark);
-}
+
 
 .myth-title-text {
   font-size: 1rem !important;
   font-weight: 600 !important;
   color: #1a1a1a !important;
-  line-height: 1.4 !important;
+  line-height: 1.2 !important;
 }
 
 .expand-icon {
@@ -184,7 +182,7 @@
 .truth-section {
   position: relative;
   background: white;
-  padding: 1.25rem;
+  padding: 0.4rem;
   border-radius: 12px;
   margin-top: 0.5rem;
 }
@@ -205,7 +203,7 @@
 
 .myth-explanation {
   font-size: 0.95rem !important;
-  line-height: 1.6 !important;
+  line-height: 1.2 !important;
   color: #333333 !important;
   font-weight: 400 !important;
 }

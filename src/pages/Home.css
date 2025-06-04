@@ -37,7 +37,7 @@
 }
 
 .brand-highlight {
-  color: var(--theme-color);
+  color:#CFC6C2;
   position: relative;
   display: inline-block;
 }
@@ -212,7 +212,7 @@
 
 .feature-text {
   font-size: 1.1rem;
-  color: var(--contrast-color);
+  color: var(--contrast-color-dark);
   font-weight: 500;
 }
 

@@ -159,7 +159,7 @@ function Home() {
             <div className="search-wrapper">
           <input
             type="text"
-            autoFocus= {false}
+            
             value={question}
                 onChange={handleInputChange}
             placeholder={examples[currentIndex]}
