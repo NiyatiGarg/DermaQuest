@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { AppContext } from '../AppContext';
 import './Home.css';
-import { FaSearch, FaRobot } from "react-icons/fa";
+import { FaSearch, FaRobot, FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { BsQuestionLg } from "react-icons/bs";
 import Header from './Header';
 import Myths from './components/MythSection';
@@ -59,12 +59,37 @@ function Home() {
       setIsExpanded(false);
       // Check if response is long enough to need the show more button
       const lineCount = aiResponse.split('\n').length;
-      setShouldShowButton(lineCount > 30);
+      setShouldShowButton(lineCount > 15);
     }
   }, [aiResponse]);
 
   const toggleExpansion = () => {
     setIsExpanded(!isExpanded);
+  };
+
+  const renderShowMoreButton = () => {
+    const lineCount = aiResponse ? aiResponse.split('\n').length : 0;
+    const hiddenLines = lineCount - 15;
+
+    return (
+      <button 
+        className={`show-more-button ${isExpanded ? 'expanded' : ''}`}
+        onClick={toggleExpansion}
+        aria-label={isExpanded ? "Show less" : "Show more"}
+      >
+        <span className="button-text">
+          {isExpanded ? "Show Less" : "Show More"}
+        </span>
+        <span className="button-icon">
+          {isExpanded ? <FaChevronUp /> : <FaChevronDown />}
+        </span>
+        {!isExpanded && (
+          <span className="button-lines-count">
+            ({hiddenLines} more lines)
+          </span>
+        )}
+      </button>
+    );
   };
 
   return (
@@ -162,7 +187,7 @@ function Home() {
           <div className="chat-container">
             {loading ? (
               <div className="loader-container">
-                <div className="loader">
+           <div className="loader">
                   <div className="loader-dot"></div>
                   <div className="loader-dot"></div>
                   <div className="loader-dot"></div>
@@ -175,36 +200,41 @@ function Home() {
                   <div className="response-header">
                     <FaRobot className="bot-icon" />
                     <span>AI Skincare Expert</span>
+         </div>
+                  <div 
+                    className={`response-content ${!isExpanded ? 'collapsed' : 'expanded'}`}
+                  >
+                    <div className="response-inner">
+          <ReactMarkdown
+          components={{
+                          p: ({ children }) => (
+                            <p className="response-paragraph">{children}</p>
+                          ),
+                          strong: ({ children }) => (
+                            <strong className="response-bold">{children}</strong>
+                          ),
+                          em: ({ children }) => (
+                            <em className="response-italic">{children}</em>
+                          ),
+                          code: ({ children }) => (
+                            <code className="response-code">{children}</code>
+                          ),
+          }}
+        >
+          {aiResponse}
+        </ReactMarkdown> 
+                    </div>
+                    {shouldShowButton && !isExpanded && (
+                      <div className="fade-overlay">
+                        <div className="fade-dots">
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                        </div>
+                      </div>
+                    )}
                   </div>
-                  <div className={`response-content ${!isExpanded ? 'collapsed' : ''}`}>
-                    <ReactMarkdown
-                      components={{
-                        p: ({ children }) => (
-                          <p className="response-paragraph">{children}</p>
-                        ),
-                        strong: ({ children }) => (
-                          <strong className="response-bold">{children}</strong>
-                        ),
-                        em: ({ children }) => (
-                          <em className="response-italic">{children}</em>
-                        ),
-                        code: ({ children }) => (
-                          <code className="response-code">{children}</code>
-                        ),
-                      }}
-                    >
-                      {aiResponse}
-                    </ReactMarkdown>
-                  </div>
-                  {shouldShowButton && (
-                    <button 
-                      className="show-more-button"
-                      onClick={toggleExpansion}
-                      aria-label={isExpanded ? "Show less" : "Show more"}
-                    >
-                      {isExpanded ? "Show Less" : "Show More"}
-                    </button>
-                  )}
+                  {shouldShowButton && renderShowMoreButton()}
                 </div>
               )
             )}
