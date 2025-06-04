@@ -200,13 +200,13 @@ function Home() {
                   <div className="ai-answer-header">
                     <FaRobot className="ai-answer-bot-icon" />
                     <span>AI Skincare Expert</span>
-                  </div>
+         </div>
                   <div 
                     className={`ai-answer-content ${!isExpanded ? 'ai-answer-collapsed' : 'ai-answer-expanded'}`}
                   >
                     <div className="ai-answer-inner">
-                      <ReactMarkdown
-                        components={{
+          <ReactMarkdown
+          components={{
                           p: ({ children }) => (
                             <p className="ai-answer-paragraph">{children}</p>
                           ),
@@ -219,10 +219,10 @@ function Home() {
                           code: ({ children }) => (
                             <code className="ai-answer-code">{children}</code>
                           ),
-                        }}
-                      >
-                        {aiResponse}
-                      </ReactMarkdown>
+          }}
+        >
+          {aiResponse}
+        </ReactMarkdown> 
                     </div>
                     {shouldShowButton && !isExpanded && (
                       <div className="ai-answer-fade-overlay">
@@ -246,11 +246,7 @@ function Home() {
                       <span className="ai-answer-button-icon">
                         {isExpanded ? <FaChevronUp /> : <FaChevronDown />}
                       </span>
-                      {!isExpanded && (
-                        <span className="ai-answer-lines-count">
-                          ({aiResponse.split('\n').length - 15} more lines)
-                        </span>
-                      )}
+                      
                     </button>
                   )}
                 </div>

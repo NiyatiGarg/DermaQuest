@@ -44,6 +44,14 @@ const Header = () => {
         if (matchedColor) {
             setPageTheme(matchedColor);
             document.documentElement.style.setProperty('--theme-color', matchedColor);
+            
+            // Convert RGB to darker version
+            const rgbValues = matchedColor.match(/\d+/g);
+            if (rgbValues) {
+                const darkerRGB = rgbValues.map(val => Math.max(0, parseInt(val) - 40)).join(', ');
+                document.documentElement.style.setProperty('--theme-color-dark', `rgb(${darkerRGB})`);
+                document.documentElement.style.setProperty('--theme-color-dark-rgb', darkerRGB);
+            }
         }
         
         const matchedContrast = ContrastColors.find(item => item.pagename === location.pathname)?.theme;
