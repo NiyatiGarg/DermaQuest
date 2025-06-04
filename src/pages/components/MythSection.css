@@ -1,170 +1,92 @@
+/* Base section styling */
 .myths-section {
-  padding: 5rem 0;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 6rem 0;
+  padding-left: 5rem;
+  background: var(--theme-color-dark);
+  position: relative;
+  overflow: hidden;
 }
 
 .myths-container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 2rem;
+  position: relative;
 }
 
+/* Modern Header Design */
 .myths-title {
-  text-align: center;
+  text-align: left;
   margin-bottom: 3rem;
   font-size: 2.5rem;
   font-weight: 700;
-  color: #2c3e50;
-  display: flex;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 1rem;
+  gap: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 4px solid rgba(255, 255, 255, 0.5);
 }
 
 .title-icon {
-  color: #ffd700;
-  animation: glow 2s ease-in-out infinite;
+  color: #ffffff;
+  font-size: 2.2rem;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 }
 
-@keyframes glow {
-  0%, 100% {
-    filter: drop-shadow(0 0 2px rgba(255, 215, 0, 0.6));
-  }
-  50% {
-    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.8));
-  }
-}
-
+/* Content Grid Layout */
 .myths-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 3rem;
+  gap: 4rem;
   align-items: start;
-}
-
-.myths-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.myth-accordion {
-  background: white !important;
-  border-radius: 12px !important;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05) !important;
-  transition: all 0.3s ease !important;
-}
-
-.myth-accordion:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1) !important;
-}
-
-.myth-summary {
-  padding: 1rem !important;
-}
-
-.myth-header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  width: 100%;
-}
-
-.myth-badge {
-  background: #ff6b6b;
-  color: white;
-  padding: 0.25rem 0.75rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-}
-
-.myth-title-text {
-  font-size: 1.1rem !important;
-  font-weight: 500 !important;
-  color: #2c3e50 !important;
-}
-
-.expand-icon {
-  color: #6c757d;
-  font-size: 1.5rem;
-  transition: transform 0.3s ease;
-}
-
-.Mui-expanded .expand-icon {
-  transform: rotate(180deg);
-}
-
-.myth-details {
-  padding: 1rem 1.5rem !important;
-  background: linear-gradient(to right, rgba(255, 107, 107, 0.05), transparent);
-}
-
-.truth-section {
   position: relative;
-  padding-left: 1rem;
 }
 
-.truth-badge {
-  background: #40c057;
-  color: white;
-  padding: 0.25rem 0.75rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  display: inline-block;
-  margin-bottom: 1rem;
-}
-
-.myth-explanation {
-  font-size: 1rem !important;
-  line-height: 1.6 !important;
-  color: #495057 !important;
-}
-
+/* Image Section */
 .myths-image-container {
   position: relative;
   width: 400px;
-  height: 400px;
-  border-radius: 50%;
+  height: 600px;
+  border-radius: 40px;
   overflow: hidden;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  transform: rotate(-3deg);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  transition: transform 0.5s ease;
+  background: white;
+  object-position: left center;
 }
 
 .myths-image-container:hover {
-  transform: scale(1.05);
+  transform: rotate(0deg);
 }
 
 .myths-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 110% center;
-  border-radius: 50%;
-  transition: transform 0.3s ease;
+  object-position: center;
+  transition: transform 0.5s ease;
 }
 
-.myths-image:hover {
+.myths-image-container:hover .myths-image {
   transform: scale(1.1);
 }
 
 .image-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.4);
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.9),
+    rgba(0, 0, 0, 0.4)
+  );
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-end;
+  padding: 2rem;
   opacity: 0;
-  transition: opacity 0.3s ease;
-  border-radius: 50%;
+  transition: all 0.4s ease;
 }
 
 .myths-image-container:hover .image-overlay {
@@ -172,41 +94,172 @@
 }
 
 .overlay-text {
-  color: white;
-  font-size: 1.5rem;
-  font-weight: 600;
-  text-align: center;
-  padding: 2rem;
+  color: #ffffff;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.4;
   transform: translateY(20px);
-  transition: transform 0.3s ease;
+  transition: transform 0.4s ease;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .myths-image-container:hover .overlay-text {
   transform: translateY(0);
 }
 
-@media (max-width: 992px) {
+/* Myths List */
+.myths-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 650px;
+}
+
+.myth-accordion {
+  background: white !important;
+  border-radius: 16px !important;
+  box-shadow: none !important;
+  transition: all 0.3s ease !important;
+  overflow: hidden !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+.myth-accordion:hover {
+  transform: translateY(-3px);
+  box-shadow: none !important;
+}
+
+
+.myth-summary {
+  padding: 1.25rem 1.5rem !important;
+  background: white !important;
+  min-height: unset !important;
+}
+
+.myth-header {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  width: 100%;
+}
+
+.myth-badge {
+  background: var(--theme-color-dark);
+  color: #ffffff;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  box-shadow: none;
+  white-space: nowrap;
+}
+
+/* Darker badge for first myth */
+.myths-list .myth-accordion:first-child .myth-badge {
+  background: var(--theme-color-dark);
+}
+
+.myth-title-text {
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  color: #1a1a1a !important;
+  line-height: 1.4 !important;
+}
+
+.expand-icon {
+  color: var(--theme-color-dark);
+  font-size: 1.6rem;
+  transition: transform 0.3s ease;
+}
+
+.Mui-expanded .expand-icon {
+  transform: rotate(-180deg);
+}
+
+.myth-details {
+  padding: 0.75rem 1.5rem 1.5rem !important;
+}
+
+.truth-section {
+  position: relative;
+  background: white;
+  padding: 1.25rem;
+  border-radius: 12px;
+  margin-top: 0.5rem;
+}
+
+.truth-badge {
+  background: #00c853;
+  color: #ffffff;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  box-shadow: none;
+  white-space: nowrap;
+}
+
+.myth-explanation {
+  font-size: 0.95rem !important;
+  line-height: 1.6 !important;
+  color: #333333 !important;
+  font-weight: 400 !important;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
   .myths-content {
     grid-template-columns: 1fr;
+    gap: 3rem;
   }
 
   .myths-image-container {
-    max-width: 600px;
+    width: 400px;
+    height: 400px;
+    margin: 0 auto;
+  }
+
+  .myths-list {
+    max-width: 800px;
     margin: 0 auto;
   }
 }
 
 @media (max-width: 768px) {
   .myths-section {
-    padding: 3rem 0;
+    padding: 4rem 0;
   }
 
   .myths-title {
     font-size: 2rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .myths-image-container {
+    width: 100%;
+    max-width: 350px;
+    height: 350px;
+    border-radius: 30px;
+  }
+
+  .overlay-text {
+    font-size: 1.2rem;
+  }
+
+  .myth-summary {
+    padding: 1rem 1.25rem !important;
+  }
+
+  .myth-details {
+    padding: 0.5rem 1.25rem 1.25rem !important;
   }
 
   .myth-title-text {
-    font-size: 1rem !important;
+    font-size: 0.95rem !important;
   }
 
   .myth-explanation {
@@ -214,28 +267,6 @@
   }
 
   .myths-container {
-    padding: 0 1rem;
+    padding: 0 1.25rem;
   }
 }
-
-/* Animation for new myths */
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.myth-accordion {
-  animation: slideIn 0.5s ease forwards;
-}
-
-.myth-accordion:nth-child(1) { animation-delay: 0.1s; }
-.myth-accordion:nth-child(2) { animation-delay: 0.2s; }
-.myth-accordion:nth-child(3) { animation-delay: 0.3s; }
-.myth-accordion:nth-child(4) { animation-delay: 0.4s; }
-.myth-accordion:nth-child(5) { animation-delay: 0.5s; }

@@ -10,22 +10,26 @@ import { FaLightbulb } from "react-icons/fa";
 import './MythSection.css';
 
 const Myths = () => {
-  const { pageTheme, myths, isSmallScreen } = useContext(AppContext);
+  const { myths } = useContext(AppContext);
+
+  const isMakeupMyth = (title) => {
+    return title.toLowerCase().includes('makeup') || title.toLowerCase().includes('make up');
+  };
 
   return (
     <section className='myths-section'>
       <div className='myths-container'>
         <h2 className='myths-title'>
           <FaLightbulb className="title-icon" />
-          Busting Common Skincare Myths
+          Skincare Myths vs Reality
         </h2>
         
-        <div className='myths-content'>
+        <div className='myths-content  justify-content-between d-flex flex-row'>
           <div className='myths-list'>
             {myths.map((myth, index) => (
               <Accordion
                 key={index}
-                className='myth-accordion'
+                className={`myth-accordion ${isMakeupMyth(myth.title) ? 'makeup-myth' : ''}`}
                 sx={{
                   '&:before': {
                     display: 'none',
@@ -45,7 +49,7 @@ const Myths = () => {
                 </AccordionSummary>
                 <AccordionDetails className='myth-details'>
                   <div className="truth-section">
-                    <div className="truth-badge">THE TRUTH</div>
+                    <div className="truth-badge">REALITY</div>
                     <Typography className='myth-explanation'>
                       {myth.explaination}
                     </Typography>
@@ -58,12 +62,12 @@ const Myths = () => {
           <div className='myths-image-container'>
             <img 
               src={girlImg} 
-              alt='Debunking skincare myths illustration' 
+              alt='Discover the truth about skincare' 
               className='myths-image'
             />
             <div className="image-overlay">
               <p className="overlay-text">
-                Get the facts right about skincare
+                Discover the truth about skincare
               </p>
             </div>
           </div>
