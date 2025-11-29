@@ -29,6 +29,7 @@ const Footer = () => {
               src={Logo} 
               alt="DermaQuest Logo" 
               className="footer-logo"
+              style={{ width: '80px' }}
             />
             <p className="brand-description">
               Your trusted source for skincare knowledge and guidance.
@@ -36,10 +37,10 @@ const Footer = () => {
           </div>
 
           {/* Navigation Sections */}
-          <div className="footer-navigation">
-            <div className="nav-section">
+          <div className="d-flex gap-2">
+            <div className="nav-section col-md-5 col-6">
               <h3 className="nav-title">Quick Links</h3>
-              <nav className="footer-nav">
+              <nav className="footer-nav d-flex align-items-start ">
                 {navigationLinks.slice(0, 3).map(({ path, label, icon: Icon }) => (
                   <NavLink 
                     key={path}
@@ -55,9 +56,9 @@ const Footer = () => {
               </nav>
             </div>
 
-            <div className="nav-section">
+            <div className="nav-section col-md-5 col-6">
               <h3 className="nav-title">Resources</h3>
-              <nav className="footer-nav">
+              <nav className="footer-nav d-flex align-items-start ">
                 {navigationLinks.slice(3).map(({ path, label, icon: Icon }) => (
                   <NavLink 
                     key={path}

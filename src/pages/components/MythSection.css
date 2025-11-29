@@ -21,17 +21,17 @@
   margin-bottom: 3rem;
   font-size: 2.5rem;
   font-weight: 700;
-  color: #ffffff;
+  color: #592b1567;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: inline-flex;
   align-items: center;
   gap: 1.5rem;
   padding-bottom: 0.75rem;
-  border-bottom: 4px solid rgba(255, 255, 255, 0.5);
+  border-bottom: 4px solid #592b152c;
 }
 
 .title-icon {
-  color: #ffffff;
+  color:#592b1531;
   font-size: 2.2rem;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 }

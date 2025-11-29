@@ -24,7 +24,7 @@ const Myths = () => {
           Skincare Myths vs Reality
         </h2>
         
-        <div className='myths-content  justify-content-between d-flex flex-row'>
+        <div className='myths-content justify-content-between d-flex flex-row flex-wrap'>
           <div className='myths-list'>
             {myths.map((myth, index) => (
               <Accordion
