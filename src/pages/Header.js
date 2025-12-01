@@ -1,7 +1,7 @@
 // Header.js
 
 import React, { useEffect, useContext } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, Link } from 'react-router-dom';
 import Logo from '../aa.svg';
 import { AppContext } from '../AppContext';
 import './Header.css';
@@ -70,11 +70,17 @@ const Header = () => {
             <header className="header" style={{ backgroundColor: pageTheme }}>
                 <div className="header-content">
                     <div className="logo-container">
-                        <img src={Logo} alt="DermaQuest Logo" className="app-logo" />
+                    <Link to="/">
+  <img 
+    src={Logo} 
+    alt="DermaQuest Logo" 
+    className="app-logo" 
+  />
+</Link>
                     </div>
                     
-                    <nav className={`nav-menu ${openSideNav && isSmallScreen ? 'mobile-menu-open' : ''}`}>
-                        <NavLink className={({ isActive }) => isActive ? "nav-link active-nav-link" : "nav-link"} to="/">
+                    <nav className="nav-menu">
+                        <NavLink className={({ isActive }) => isActive ? "nav-link active-nav-link" : "nav-link"} to="/" >
                             Home
                         </NavLink>
                         <NavLink className={({ isActive }) => isActive ? "nav-link active-nav-link" : "nav-link"} to="/blogs">

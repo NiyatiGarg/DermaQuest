@@ -25,7 +25,7 @@ const SideNav = () => {
         <>
           {openSideNav ? (
             <div
-              className="d-flex flex-column h-100 w-50 flex-column"
+              className="d-flex flex-column h-100 w-100 flex-column overflow-hidden position-fixed"
               style={{ background: 'white', zIndex: 2, position: "absolute", background: pageTheme, top:0  }}
             >
                 <div
@@ -38,14 +38,7 @@ const SideNav = () => {
               />
             </div>
             <>
-            <div className=" d-flex align-items-start justify-content-center px-4">
-            <img
-                src={Logo}
-                style={{ height: "70px", padding: "5px" }}
-                alt="appLogo"
-                className="appLogo"
-              />
-            </div>
+            
             
               <nav className="d-flex align-items-center flex-column gap-4 m-4">
                 <NavLink
@@ -56,6 +49,7 @@ const SideNav = () => {
                   }
                   exact
                   to="/"
+                  onClick={() => setOpenSideNav(false)}
                 >
                   {" "}
                   <RiHome9Line /> <span className="p-2">Home </span>
@@ -68,6 +62,7 @@ const SideNav = () => {
                   }
                   exact
                   to="/blogs"
+                  onClick={() => setOpenSideNav(false)}
                 >
                   {" "}
                   <FaRegBookmark />
@@ -81,6 +76,7 @@ const SideNav = () => {
                   }
                   exact
                   to="/ingredients"
+                  onClick={() => setOpenSideNav(false)}
                 >
                   {" "}
                   <RiInkBottleLine />
@@ -94,6 +90,7 @@ const SideNav = () => {
                   }
                   exact
                   to="/quiz"
+                  onClick={() => setOpenSideNav(false)}
                 >
                   {" "}
                   <MdOutlineQuiz />
@@ -107,6 +104,7 @@ const SideNav = () => {
                   }
                   exact
                   to="/about"
+                  onClick={() => setOpenSideNav(false)}
                 >
                   {" "}
                   <GrStatusInfo />
@@ -120,6 +118,7 @@ const SideNav = () => {
                   }
                   exact
                   to="/contact"
+                  onClick={() => setOpenSideNav(false)}
                 >
                   {" "}
                   <MdOutlineMarkEmailRead />

@@ -18,7 +18,9 @@ function App() {
 
   return (
     <AppContextProvider >
+
     <Router>
+    <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/quiz" element={<Quiz />} />

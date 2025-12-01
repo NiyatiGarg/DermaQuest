@@ -63,10 +63,16 @@ function Home() {
   }, [aiResponse]);
 
   const toggleExpansion = () => setIsExpanded(!isExpanded);
+// scroll to top when Home loads
+useEffect(() => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}, []);
 
   return (
     <div className="app-container" style={{ color: contrastColor }}>
-      <Header />
 
       {/* Hero Section */}
       <section className="hero-section text-center py-5">

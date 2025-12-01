@@ -1,13 +1,16 @@
 import React, { useContext, useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 import { AppContext } from "../AppContext";
 
 import Header from "./Header";
 import Footer from "./Footer";
 
+import { IoIosArrowBack } from "react-icons/io";
 
 function SingleBlog() {
+  const navigate= useNavigate();
+
   const { id, title } = useParams();
 
   const { allBlogs, isSmallScreen, contrastColor } = useContext(AppContext);
@@ -17,14 +20,29 @@ function SingleBlog() {
     const found = allBlogs.find((item) => item.key === parseInt(id));
     setBlog(found);
   }, [id]);
-
-  if (!blog) return <div>Loading...</div>;
-
+  
+  // Scroll to top when blog opens
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  }, [id]);
+  
   return (
     <>
-      <Header />
-      <div style={{  minHeight: '100vh' , gridTemplateColumns: '1fr 300px',}} className=" d-flex flex-column responsive-margin">
-        <h1 style={{color: contrastColor, paddingTop: '4rem' }}>{blog.title}</h1>
+      {!blog?
+      <div className="d-flex align-items-center justify-content-center" style={{height: '60vh'}}>Loading...</div>
+    :
+    <div style={{  minHeight: '100vh' , gridTemplateColumns: '1fr 300px',}} className=" d-flex flex-column responsive-margin">
+     <div className="d-flex gap-2">
+      <div onClick={() => navigate('/blogs')} className="d-flex py-2 align-items-start " style={{fontSize: '2rem', color: contrastColor}}>
+      <IoIosArrowBack  />
+      </div>
+     <h1 style={{color: contrastColor , textDecoration: 'underline'}}>{blog.title}</h1>
+
+     </div>
+        
         <div className="gap-4 d-flex">
           <div className="flex-grow-1 blog-text" style={{ textAlign: "start" , lineHeight: '2rem' }}
           dangerouslySetInnerHTML={{ __html: blog.description }}
@@ -45,6 +63,8 @@ function SingleBlog() {
           
         </div>
       </div>
+    }
+      
      <Footer/>
     </>
   );

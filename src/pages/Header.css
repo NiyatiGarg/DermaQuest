@@ -16,7 +16,7 @@
     color: black; /* Text color on active */
     text-decoration: underline; /* Underline on active */
     text-underline-offset: 2em; 
-    text-decoration-thickness: 3px;
+    text-decoration-thickness: 1px;
     min-width: 90px;
   }
  

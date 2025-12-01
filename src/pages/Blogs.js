@@ -32,7 +32,6 @@ function Blogs() {
 
   return (
         <div >
-        <Header />
         <section className='justify-content-center d-flex flex-column gap-5 responsive-margin' >
         <h4 className='pt-4'>Understand Your Skin Better</h4>
           <p>Skincare isn't just about products—it's about understanding your skin and the science behind what truly works. <br/><br/>In this section, you'll find articles that explore the why behind skincare: from the layers of your skin and how they function, to the role of natural remedies like Multani Mitti and Phitkari. We also dive into how herbal and traditional ingredients can complement modern skincare, and why maintaining your skin’s health is essential—not just for beauty, but for overall wellness.

@@ -32,7 +32,6 @@ function Ingredients() {
 
   return (
         <div >
-        <Header />
         <section className='justify-content-center d-flex flex-column gap-5 responsive-margin' >
         <h4 className='pt-4'>Know What You're Putting on Your Skin</h4>
           <p>Behind every effective skincare product is an ingredient doing the hard work. This section breaks down popular skincare ingredients—both modern and natural—so you know exactly what you're applying to your skin and why. <br/><br/>

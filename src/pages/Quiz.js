@@ -190,203 +190,177 @@ function Quiz() {
   const currentQuestion = skincareQuestions[currentIndex];
   return (
     <>
-      <Header />
-      <section
-        className="justify-content-between d-flex flex-column"
-        style={{ margin: "0vh 10vw", minHeight: "85vh" }}
-      >
-        <div className="d-flex justify-content-start align-items-center py-5">
-          {!aiResponse ? (
-            <h6 className="p-1">
-              <b>Take a Quiz :</b> Let's figure out your skin type.{" "}
-            </h6>
-          ) : (
-            <h5 className="p-1">
-              <b>Heres your PERSONALIZED SKINCARE ALALYSIS</b>
-            </h5>
-          )}
-        </div>
-        <>
-        {loading?
-            <div style={{height: '50vh'}} className="d-flex justify-content-start align-items-center flex-column">
-              <div className="spinner-border mb-3 " role="status" style={{color: contrastColor, }}>
-    {/* <span className="visually-hidden">Loading...</span> */}
+    {/* Title */}
+  <div className="py-4">
+    {!aiResponse ? (
+      <h6 className="px-md-5 px-3 py-1">
+        <b>Take a Quiz :</b> Let's figure out your skin type.
+      </h6>
+    ) : (
+      <h5 className="p-1 text-center text-md-start">
+        <b>Here’s your PERSONALIZED SKINCARE ANALYSIS</b>
+      </h5>
+    )}
   </div>
-              <p>Your results are almost ready. Thanks for your patience!</p>
-            </div>
-            :
-            <div className="d-flex">
-          {!aiResponse && (
-            <img src={quizBg} alt="take a quiz" style={{ height: "500px" }} />
-          )}
+     <section
+  className="d-flex flex-column "
+  style={{ margin: "0 5vw", bottom: 0 }}
+>
+  
 
-          {aiResponse ? (
-            <div className="d-flex flex-column pb-5" style={{}}>
-              <ReactMarkdown
-                // className='default-scrollbar'
-                style={{
-                  paddingBottom: "2rem",
-                  overflow: "scroll",
+  {/* Loading */}
+  {loading ? (
+    <div
+      style={{ height: "50vh" }}
+      className="d-flex flex-column justify-content-center align-items-center"
+    >
+      <div
+        className="spinner-border mb-3"
+        role="status"
+        style={{ color: contrastColor }}
+      />
+      <p className="text-center">Your results are almost ready...</p>
+    </div>
+  ) : (
+    <div className="row w-100 g-4">
+      {/* Left Image (Hidden on XS / visible on md+) */}
+      {!aiResponse && (
+        <div className="col-md-5 d-none d-md-flex justify-content-center">
+          <img
+            src={quizBg}
+            alt="take a quiz"
+            className="img-fluid"
+            style={{ height: "550px", objectFit: "cover", marginBottom: '-2px' , width: 'auto'}}
+          />
+        </div>
+      )}
 
-                  // zIndex: 2,
-                  //  background: '#F8F9FA', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.4)', overflow:'scroll', maxHeight: '550px'
-                }}
-                components={{
-                  p: ({ children }) => (
-                    <p className="mb-2 text-body">{children}</p>
-                  ),
-                  strong: ({ children }) => (
-                    <strong className="fw-bold">{children}</strong>
-                  ),
-                  em: ({ children }) => (
-                    <em className="fst-italic">{children}</em>
-                  ),
-                  code: ({ children }) => (
-                    <code className="bg-light px-1 rounded">{children}</code>
-                  ),
-                }}
-              >
-                {aiResponse}
-              </ReactMarkdown>
-              <button
-                className="px-3 py-2 mt-5 gap-4 d-flex align-items-center justify-content-center"
-                style={{
-                  width: "15%",
-                  border: "none",
-                  color: "white",
-                  background: "#df880d",
-                  borderRadius: "0.3vw",
-                }}
-                onClick={() => {
-                  console.log("submit button clicked");
-                  setAiResponse(null);
-                  setQuizStarted(false);
-                  setCurrentIndex(0);
-                  setAnswers([]);
-                  setShowSubmitButton(false);
-                  setSelectedIndex(null);
-                }}
-              >
+      {/* Right Content */}
+      <div className={`col-12 mb-3 ${!aiResponse ? "col-md-7" : "col-md-12"}`}>
+        {/* AI RESPONSE */}
+        {aiResponse ? (
+          <div className="d-flex flex-column pb-5">
+            <ReactMarkdown
+              className="overflow-auto"
+              style={{ maxHeight: "60vh" }}
+            >
+              {aiResponse}
+            </ReactMarkdown>
 
-                <span>Retake Quiz</span>
-                <FaRepeat />
-              </button>
-            </div>
-          ) : (
-           
-            
-            <>
-           
-              {quizStarted ? (
-                <div className="d-flex flex-column gap-2">
-                  {/* quiz questions  */}
+            <button
+              className="px-3 py-2 mt-4 d-flex align-items-center justify-content-center"
+              style={{
+                width: "200px",
+                border: "none",
+                color: "white",
+                background: "#df880d",
+                borderRadius: "6px",
+              }}
+              onClick={() => {
+                setAiResponse(null);
+                setQuizStarted(false);
+                setCurrentIndex(0);
+                setAnswers([]);
+                setShowSubmitButton(false);
+                setSelectedIndex(null);
+              }}
+            >
+              Retake Quiz
+              <FaRepeat className="ms-2" />
+            </button>
+          </div>
+        ) : (
+          <>
+            {/* QUIZ QUESTIONS */}
+            {quizStarted ? (
+              <div className="d-flex flex-column gap-3">
+                <h5 className="fw-bold">{currentQuestion.question}</h5>
 
-                  <h2>{currentQuestion.question}</h2>
-                  {currentQuestion.options.map((opt, idx) => {
-                    const selected = selectedIndex === idx;
-
-                    return (
-                      <button
-                        key={idx}
-                        className="px-3 py-2 quiz-button"
-                        style={{
-                          width: "100%",
-                          border: `1px solid ${contrastColor}`,
-                          color: selected ? "white" : "black",
-                          background: selected ? contrastColor : "transparent",
-                          borderRadius: "0.3vw",
-                        }}
-                        onClick={() => handleAnswer(opt.value, idx)}
-                      >
-                        {opt.label}
-                      </button>
-                    );
-                  })}
-                  {showSubmitButton ? (
+                {currentQuestion.options.map((opt, idx) => {
+                  const selected = selectedIndex === idx;
+                  return (
                     <button
-                      className="px-3 py-2 mt-5"
+                      key={idx}
+                      className="px-3 py-2 quiz-button text-start"
                       style={{
+                        border: `1px solid ${contrastColor}`,
+                        color: selected ? "white" : "black",
+                        background: selected ? contrastColor : "transparent",
+                        borderRadius: "6px",
                         width: "100%",
-                        border: "none",
-                        color: "white",
-                        background: "#df880d",
-                        borderRadius: "0.3vw",
                       }}
-                      onClick={() => {
-                        console.log("submit button clicked");
-                        evaluateAnswers();
-                        setLoading(true);
-                      }}
+                      onClick={() => handleAnswer(opt.value, idx)}
                     >
-                      Submit
+                      {opt.label}
                     </button>
-                  ) : (
-                    <button
-                      className="px-3 py-2 mt-5"
-                      style={{
-                        width: "100%",
-                        border: "none",
-                        color: "white",
-                        background: contrastColor,
-                        borderRadius: "0.3vw",
-                      }}
-                      onClick={() => {
-                        handleNext();
-                      }}
-                    >
-                      Next
-                    </button>
-                  )}
-                </div>
-              ) : (
-                <div >
-                  <h6 className="bg-light p-4" style={{}}>
-                    I'll ask you some questions. Be as honest as possible for
-                    the most accurate results. <br />
-                    <br />
-                    <br />{" "}
-                    <h5 style={{ color: contrastColor, fontWeight: "bold" }}>
-                      Ready ?
-                    </h5>
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <div className="align-items-center d-flex justify-content-center">
-                      <button
-                        style={{
-                          width: "100%",
-                          border: `2px solid ${contrastColor}`,
-                          background: pageTheme,
-                          borderRadius: "0.3vw",
-                        }}
-                        className="px-3 py-2 d-flex justify-content-center"
-                        onClick={() => {
-                          setQuizStarted(true);
-                        }}
-                      >
-                        Start Quiz{" "}
-                      </button>
-                    </div>
-                  </h6>
-                </div>
-              )}
-            </>
-            
-           
-            
-          )}
-        
-        
-        
-        
-            </div>
+                  );
+                })}
 
-        }
-        </>
-        
-      </section>
+                {/* NEXT / SUBMIT BUTTON */}
+                {showSubmitButton ? (
+                  <button
+                    className="btn mt-4 text-white"
+                    style={{
+                      width: "100%",
+                      background: "#df880d",
+                      borderRadius: "6px",
+                    }}
+                    onClick={() => {
+                      evaluateAnswers();
+                      setLoading(true);
+                    }}
+                  >
+                    Submit
+                  </button>
+                ) : (
+                  <button
+                    className="btn mt-4 text-white"
+                    style={{
+                      width: "100%",
+                      background: contrastColor,
+                      borderRadius: "6px",
+                    }}
+                    onClick={handleNext}
+                  >
+                    Next
+                  </button>
+                )}
+              </div>
+            ) : (
+              /* START QUIZ SCREEN */
+              <div className="bg-light p-4 rounded">
+                <p>
+                  I'll ask you some questions. Be as honest as possible for the
+                  most accurate results.
+                </p>
+
+                <h5
+                  style={{ color: contrastColor, fontWeight: "bold" }}
+                  className="text-center my-4"
+                >
+                  Ready?
+                </h5>
+
+                <button
+                  className="btn w-100 py-2"
+                  style={{
+                    border: `2px solid ${contrastColor}`,
+                    background: pageTheme,
+                    borderRadius: "6px",
+                  }}
+                  onClick={() => setQuizStarted(true)}
+                >
+                  Start Quiz
+                </button>
+              </div>
+            )}
+          </>
+        )}
+      </div>
+    </div>
+  )}
+</section>
+
 
       <Footer />
     </>

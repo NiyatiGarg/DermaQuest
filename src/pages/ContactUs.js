@@ -12,7 +12,6 @@ function ContactUs() {
 
   return (
     <div >
-      <Header />
       <div className='d-flex justify-content-center flex-column ' style={{ padding: '2% 10%' }}>
         <h1 className='my-4'>
           Contact Us
