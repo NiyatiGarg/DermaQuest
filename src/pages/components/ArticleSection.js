@@ -5,7 +5,7 @@ import { FaBookOpen, FaArrowRight } from "react-icons/fa";
 import './ArticleSection.css';
 
 function ArticleSection() {
-  const { pageTheme, mustReadBlogs } = useContext(AppContext);
+  const { pageTheme, mustReadBlogs, contrastColor } = useContext(AppContext);
   const navigate = useNavigate();
 
   return (
@@ -25,7 +25,7 @@ function ArticleSection() {
               className="article-card"
               onClick={() => navigate(`/blog/${blog.key}/${blog.title}`)}
               style={{
-                '--hover-color': pageTheme
+                '--hover-color': contrastColor
               }}
             >
               <div className="article-image-wrapper">

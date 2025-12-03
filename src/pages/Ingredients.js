@@ -32,24 +32,20 @@ function Ingredients() {
 
   return (
         <div >
-        <section className='justify-content-center d-flex flex-column gap-5 responsive-margin' >
-        <h4 className='pt-4'>Know What You're Putting on Your Skin</h4>
+        <section className='justify-content-center d-flex flex-column gap-2 responsive-margin' >
+        <h1 className="my-4 text-md-start fw-bold">Ingredients</h1>
+        <h4 className=''>Know What You're Putting on Your Skin</h4>
           <p>Behind every effective skincare product is an ingredient doing the hard work. This section breaks down popular skincare ingredients—both modern and natural—so you know exactly what you're applying to your skin and why. <br/><br/>
-          <br/>
           From powerhouse actives like Hyaluronic Acid and Vitamin C to exfoliants like Salicylic Acid, we explain how these components work, their benefits, who they’re best for, and how to use them safely. Our goal is to help you make informed choices and build a routine that supports your unique skin needs.
           <br/><br/>Discover the science, the benefits, and the best practices—one ingredient at a time.</p>
         
           
         <div
+          className="d-flex mt-4 align-items-center p-2 w-100"
           style={{
-            width: '100%',
-            height: '50%',
-            // backgroundColor: pageTheme,
-            border: '1px solid black',
-            // boxShadow: '0 0 10px rgba(0, 0, 0, 0.2)',
-            // borderRadius: 
-
-          }} className='d-flex mt-4 align-items-center p-2'>
+            border: "1px solid black",
+          }}
+        >
           <input
             autofocus={false}
             type="text"
@@ -75,25 +71,17 @@ function Ingredients() {
         </div>
        
       
-      <div className="d-flex gap-4 flex-wrap">
+      <div className="d-flex flex-wrap pt-4 gap-4">
       {filteredBlogs.length > 0 ? (
             filteredBlogs.map((blog) => (
           <div
-            class=" card mb-3 d-flex flex-column p-3 gap-1 blog-cards"
+            class=" d-flex flex-column p-3 gap-1 col-md-3 col-12"
             style={{
               background: pageTheme,
               border: 'none',
-              // boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
             }}
           >
-            <div className="d-flex">
-              {/* <img
-                src={blog.imageUrl}
-                style={{ height: "200px", width: "100%" }}
-                className="d-flex"
-                alt="img"
-              /> */}
-            </div>
+            
             <div class="d-flex flex-column justify-content-between" style={{ height: "100%" }}>
                 <h5 class="card-title fw-bold two-line-text text-black" style={{cursor: 'pointer'}} title={blog.title} >{blog.title}</h5>
               <div class="">

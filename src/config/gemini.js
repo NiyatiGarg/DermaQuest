@@ -1,4 +1,4 @@
-const API_KEY = 'AIzaSyCwkNmi498KsOBs_hOGRXGrpAEAUN8Ky3c';
+const API_KEY = 'AIzaSyBHVInro8QjkqTI1MPMSafthQ0ZOYpS_eQ';
 
 export default async function getAiResponse(prompt) {
   const generationConfig = {

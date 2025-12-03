@@ -11,7 +11,7 @@ function AboutUs() {
     <div style={{ backgroundColor: bgColor }}>
       <div className="d-flex justify-content-center flex-column responsive-margin blog-text">
         <h1 className="my-4 d-flex text-start">
-          DermaQuest: Your Personalized Skincare Guide
+          About Us
         </h1>
         <p>
           DermaQuest is your ultimate destination for all things skincare. We

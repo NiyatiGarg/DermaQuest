@@ -147,9 +147,9 @@
 .myth-badge {
   background: #592A15;
   color: #ffffff;
-  padding: 0.4rem 0.8rem;
+  padding: 0.4rem 0.5rem;
   border-radius: 20px;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0.5px;
   box-shadow: none;
@@ -190,9 +190,9 @@
 .truth-badge {
   background: #00c853;
   color: #ffffff;
-  padding: 0.4rem 0.8rem;
+  padding: 0.3rem 0.5rem;
   border-radius: 20px;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0.5px;
   display: inline-block;
